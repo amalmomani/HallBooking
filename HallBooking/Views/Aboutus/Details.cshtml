@@ -1,0 +1,72 @@
+﻿@model HallBooking.Models.Aboutu
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Aboutu</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Text1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Text1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Text2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Text2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Text3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Text3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Text4)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Text4)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Text5)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Text5)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Text6)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Text6)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Text7)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Text7)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Text8)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Text8)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Aboutid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
