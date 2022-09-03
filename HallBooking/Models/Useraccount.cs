@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -18,6 +20,9 @@ namespace HallBooking.Models
         public string Fullname { get; set; }
         public decimal? Phonenumber { get; set; }
         public string Image { get; set; }
+        [NotMapped]
+        public virtual IFormFile ImageFile { get; set; }
+
         public string Email { get; set; }
         public string Password { get; set; }
         public decimal? Roleid { get; set; }
