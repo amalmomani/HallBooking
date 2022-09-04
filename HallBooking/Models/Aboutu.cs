@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -17,5 +19,7 @@ namespace HallBooking.Models
         public string Text7 { get; set; }
         public string Text8 { get; set; }
         public string Image { get; set; }
+        [NotMapped]
+        public virtual IFormFile ImageFile { get; set; }
     }
 }

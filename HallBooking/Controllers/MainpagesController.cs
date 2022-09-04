@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HallBooking.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace HallBooking.Controllers
 {
     public class MainpagesController : Controller
     {
         private readonly ModelContext _context;
+        private readonly IWebHostEnvironment webHostEnviroment;
 
-        public MainpagesController(ModelContext context)
+        public MainpagesController(ModelContext context, IWebHostEnvironment webHostEnviroment)
         {
             _context = context;
+            this.webHostEnviroment = webHostEnviroment;
         }
 
         // GET: Mainpages
@@ -53,12 +57,26 @@ namespace HallBooking.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Homeid,Companylogo,Image2,Text1,Text2,Companyemail,Companyphone")] Mainpage mainpage)
+        public async Task<IActionResult> Create([Bind("Homeid,Companylogo,Image2,Text1,Text2,Companyemail,Companyphone,ImageFile")] Mainpage mainpage)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(mainpage);
-                await _context.SaveChangesAsync();
+
+                if (mainpage.ImageFile != null)
+                {
+                    string wwwrootPath = webHostEnviroment.WebRootPath;
+                    string fileName = Guid.NewGuid().ToString() + "_" + mainpage.ImageFile.FileName;
+                    //1523f14f-5535-40c6-82bb-7d3b9edf2e75_piza2.jpg
+                    string path = Path.Combine(wwwrootPath + "/Images/" + fileName);
+                    using (var filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await mainpage.ImageFile.CopyToAsync(filestream);
+                    }
+                    mainpage.Image2 = fileName;
+                    _context.Add(mainpage);
+                    await _context.SaveChangesAsync();
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             return View(mainpage);

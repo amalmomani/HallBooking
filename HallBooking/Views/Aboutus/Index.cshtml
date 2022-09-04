@@ -70,7 +70,8 @@
                 @Html.DisplayFor(modelItem => item.Text8)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                <img src=@Url.Content("~/Images/"+item.Image) style="border-radius:20%;" width="100" height="100" />
+
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Aboutid">Edit</a> |

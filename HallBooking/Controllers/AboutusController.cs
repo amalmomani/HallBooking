@@ -6,16 +6,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HallBooking.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace HallBooking.Controllers
 {
     public class AboutusController : Controller
     {
         private readonly ModelContext _context;
+        private readonly IWebHostEnvironment webHostEnviroment;
 
-        public AboutusController(ModelContext context)
+        public AboutusController(ModelContext context, IWebHostEnvironment webHostEnviroment)
         {
             _context = context;
+            this.webHostEnviroment = webHostEnviroment;
         }
 
         // GET: Aboutus
@@ -53,12 +57,25 @@ namespace HallBooking.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Aboutid,Text1,Text2,Text3,Text4,Text5,Text6,Text7,Text8,Image")] Aboutu aboutu)
+        public async Task<IActionResult> Create([Bind("Aboutid,Text1,Text2,Text3,Text4,Text5,Text6,Text7,Text8,Image,ImageFile")] Aboutu aboutu)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(aboutu);
-                await _context.SaveChangesAsync();
+                if (aboutu.ImageFile != null)
+                {
+                    string wwwrootPath = webHostEnviroment.WebRootPath;
+                    string fileName = Guid.NewGuid().ToString() + "_" + aboutu.ImageFile.FileName;
+                    //1523f14f-5535-40c6-82bb-7d3b9edf2e75_piza2.jpg
+                    string path = Path.Combine(wwwrootPath + "/Images/" + fileName);
+                    using (var filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await aboutu.ImageFile.CopyToAsync(filestream);
+                    }
+                    aboutu.Image = fileName;
+                    _context.Add(aboutu);
+                    await _context.SaveChangesAsync();
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             return View(aboutu);
