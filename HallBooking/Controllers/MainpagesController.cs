@@ -103,7 +103,7 @@ namespace HallBooking.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("Homeid,Companylogo,Image2,Text1,Text2,Companyemail,Companyphone")] Mainpage mainpage)
+        public async Task<IActionResult> Edit(decimal id, [Bind("Homeid,Companylogo,Image2,Text1,Text2,Companyemail,Companyphone,ImageFile")] Mainpage mainpage)
         {
             if (id != mainpage.Homeid)
             {
@@ -114,6 +114,18 @@ namespace HallBooking.Controllers
             {
                 try
                 {
+                    if (mainpage.ImageFile != null)
+                    {
+                        string wwwrootPath = webHostEnviroment.WebRootPath;
+                        string fileName = Guid.NewGuid().ToString() + "_" + mainpage.ImageFile.FileName;
+                        //1523f14f-5535-40c6-82bb-7d3b9edf2e75_piza2.jpg
+                        string path = Path.Combine(wwwrootPath + "/Images/" + fileName);
+                        using (var filestream = new FileStream(path, FileMode.Create))
+                        {
+                            await mainpage.ImageFile.CopyToAsync(filestream);
+                        }
+                        mainpage.Image2 = fileName;
+                    }
                     _context.Update(mainpage);
                     await _context.SaveChangesAsync();
                 }

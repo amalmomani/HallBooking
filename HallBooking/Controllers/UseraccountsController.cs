@@ -108,7 +108,7 @@ namespace HallBooking.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("Userid,Fullname,Phonenumber,Image,Email,Password,Roleid")] Useraccount useraccount)
+        public async Task<IActionResult> Edit(decimal id, [Bind("Userid,Fullname,Phonenumber,Image,Email,Password,Roleid,ImageFile")] Useraccount useraccount)
         {
             if (id != useraccount.Userid)
             {
@@ -119,6 +119,18 @@ namespace HallBooking.Controllers
             {
                 try
                 {
+                    if (useraccount.ImageFile != null)
+                    {
+                        string wwwrootPath = webHostEnviroment.WebRootPath;
+                        string fileName = Guid.NewGuid().ToString() + "_" + useraccount.ImageFile.FileName;
+                        //1523f14f-5535-40c6-82bb-7d3b9edf2e75_piza2.jpg
+                        string path = Path.Combine(wwwrootPath + "/Images/" + fileName);
+                        using (var filestream = new FileStream(path, FileMode.Create))
+                        {
+                            await useraccount.ImageFile.CopyToAsync(filestream);
+                        }
+                        useraccount.Image = fileName;
+                    }
                     _context.Update(useraccount);
                     await _context.SaveChangesAsync();
                 }
@@ -135,7 +147,7 @@ namespace HallBooking.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Roleid"] = new SelectList(_context.Roles, "Roleid", "Roleid", useraccount.Roleid);
+           
             return View(useraccount);
         }
 
