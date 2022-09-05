@@ -180,6 +180,11 @@ namespace HallBooking.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
 
         private bool UseraccountExists(decimal id)
         {
