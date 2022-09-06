@@ -1,221 +1,244 @@
 ﻿<!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-          content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Ample Admin Lite Template by WrapPixel</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
+    <title>Hope Shop</title>
+
+
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="~/Admin_Assests/plugins/images/favicon.png">
-    <!-- Custom CSS -->
-    <link href="~/Admin_Assests/plugins/bower_components/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="~/Admin_Assests/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css">
-    <!-- Custom CSS -->
-    <link href="~/Admin_Assests/css/style.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Home/img/favicons/favicon.ico">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="~/Admin_Assests/fonts/fontawesome/css/fontawesome-all.min.css">
+    <!-- animation css -->
+    <link rel="stylesheet" href="~/Admin_Assests/plugins/animation/css/animate.min.css">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/Admin_Assests/css/style.css">
+
 </head>
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
-    <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
-         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <header class="topbar" data-navbarbg="skin5">
-            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-                <div class="navbar-header" data-logobg="skin6">
-                    <!-- ============================================================== -->
-                    <!-- Logo -->
-                    <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
-                        <!-- Logo icon -->
-                        <b class="logo-icon">
-                            <!-- Dark Logo icon -->
-                            <img src="~/Admin_Assests/plugins/images/logo-icon.png" alt="homepage" />
-                        </b>
-                        <!--End Logo icon -->
-                        <!-- Logo text -->
-                        <span class="logo-text">
-                            <!-- dark Logo text -->
-                            <img src="~/Admin_Assests/plugins/images/logo-text.png" alt="homepage" />
-                        </span>
-                    </a>
-                    <!-- ============================================================== -->
-                    <!-- End Logo -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
-                       href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End Logo -->
-                <!-- ============================================================== -->
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-
-                    <!-- ============================================================== -->
-                    <!-- Right side toggle and nav items -->
-                    <!-- ============================================================== -->
-                    <ul class="navbar-nav ms-auto d-flex align-items-center">
-
-                        <!-- ============================================================== -->
-                        <!-- Search -->
-                        <!-- ============================================================== -->
-                        <li class=" in">
-                            <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
-                                <a href="" class="active">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </form>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                        <li>
-                            <a class="profile-pic" href="#">
-                                <img src="~/Admin_Assests/plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                     class="img-circle"><span class="text-white font-medium">Steave</span>
-                            </a>
-                        </li>
-                        <!-- ============================================================== -->
-                        <!-- User profile and search -->
-                        <!-- ============================================================== -->
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar" data-sidebarbg="skin6">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <!-- User Profile-->
-                        <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html"
-                               aria-expanded="false">
-                                <i class="far fa-clock" aria-hidden="true"></i>
-                                <span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
-                               aria-expanded="false">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Profile</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html"
-                               aria-expanded="false">
-                                <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Basic Table</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="fontawesome.html"
-                               aria-expanded="false">
-                                <i class="fa fa-font" aria-hidden="true"></i>
-                                <span class="hide-menu">Icon</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="map-google.html"
-                               aria-expanded="false">
-                                <i class="fa fa-globe" aria-hidden="true"></i>
-                                <span class="hide-menu">Google Map</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="blank.html"
-                               aria-expanded="false">
-                                <i class="fa fa-columns" aria-hidden="true"></i>
-                                <span class="hide-menu">Blank Page</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="404.html"
-                               aria-expanded="false">
-                                <i class="fa fa-info-circle" aria-hidden="true"></i>
-                                <span class="hide-menu">Error 404</span>
-                            </a>
-                        </li>
-                        <li class="text-center p-20 upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/ampleadmin/"
-                               class="btn d-grid btn-danger text-white" target="_blank">
-                                Upgrade to Pro
-                            </a>
-                        </li>
-                    </ul>
-
-                </nav>
-                <!-- End Sidebar navigation -->
+    <!-- [ Pre-loader ] End -->
+    <!-- [ navigation menu ] start -->
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper">
+            <div class="navbar-brand header-logo">
+                <a href="/Dashboard/Dashboard" class="b-brand">
+                    <div class="b-bg">
+                        <i class="feather icon-shopping-cart"></i>
+                    </div>
+                    <span class="b-title">Hope Shop</span>
+                </a>
+                <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
             </div>
-            <!-- End Sidebar scroll-->
-        </aside>
-        <div>
-            @RenderBody()
-        </div>
-        <footer class="footer text-center">
-            2021 © Ample Admin brought to you by <a href="https://www.wrappixel.com/">wrappixel.com</a>
-        </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="~/Admin_Assests/plugins/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstra~/Admin_Assests/p tether Core JavaScript -->
-    <script src="~/Admin_Assests/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/Admin_Assests/js/app-style-switcher.js"></script>
-    <script src="~/Admin_Assests/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <!--Wave Effe~/Admin_Assests/cts -->
-    <script src="~/Admin_Assests/js/waves.js"></script>
-    <!--Menu side~/Admin_Assests/bar -->
-    <script src="~/Admin_Assests/js/sidebarmenu.js"></script>
-    <!--Custom Ja~/Admin_Assests/vaScript -->
-    <script src="~/Admin_Assests/js/custom.js"></script>
-    <!--This page~/Admin_Assests/ JavaScript -->
-    <!--chartis c~/Admin_Assests/hart-->
-    <script src="~/Admin_Assests/plugins/bower_components/chartist/dist/chartist.min.js"></script>
-    <script src="~/Admin_Assests/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="~/Admin_Assests/js/pages/dashboards/dashboard1.js"></script>
-</body>
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Navigation</label>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Dashboard/Dashboard" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Useraccounts/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-users"></i></span><span class="pcoded-mtext">Users</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Category1/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-server"></i></span><span class="pcoded-mtext">Categories</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Shop1/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Stores</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Product1/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-bar-chart-2"></i></span><span class="pcoded-mtext">Products</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Productshops/Index" class="nav-link"><span class="pcoded-micon"><i class="feather icon-menu"></i></span><span class="pcoded-mtext">Store's Products</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Contactus/Index" class="nav-link "><span class="pcoded-micon"><i class="feather icon-mail"></i></span><span class="pcoded-mtext"> Contact Us Messages</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Dashboard/Reports" class="nav-link "><span class="pcoded-micon"><i class="feather icon-refresh-cw"></i></span><span class="pcoded-mtext"> Reports </span></a>
+                    </li>
+                    <li class="nav-item pcoded-hasmenu">
+                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-file-minus"></i></span><span class="pcoded-mtext">Orders</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="/Dashboard/PaiedJoinTable" class="">Paied Orders</a></li>
+                            <li class=""><a href="/Dashboard/JoinTable" class="">Unpaied Orders</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item pcoded-hasmenu">
+                        <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Manage Pages</span></a>
+                        <ul class="pcoded-submenu">
+                            <li class=""><a href="/Mainpages/Index" class="">Home page</a></li>
+                            <li class=""><a href="/Testimonials/Index" class="">Testimonials</a></li>
+                            <li class=""><a href="/Aboutus/Index" class=""> About Us</a></li>
 
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- [ navigation menu ] end -->
+    <!-- [ Header ] start -->
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
+            <a href="/Dashboard/Dashboard" class="b-brand">
+                <div class="b-bg">
+                    <i class="feather icon-trending-up"></i>
+                </div>
+                <span class="b-title">Hope Shop</span>
+            </a>
+        </div>
+        <a class="mobile-menu" id="mobile-header" href="javascript:">
+            <i class="feather icon-more-horizontal"></i>
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li><a href="javascript:" class="full-screen" onclick="javascript:toggleFullScreen()"><i class="feather icon-maximize"></i></a></li>
+                @*<li class="nav-item">
+                        <div class="main-search">
+                            <div class="input-group">
+                                <input type="text" id="m-search" class="form-control" placeholder="Search . . .">
+                                <a href="javascript:" class="input-group-append search-close">
+                                    <i class="feather icon-x input-group-text"></i>
+                                </a>
+                                <span class="input-group-append search-btn btn btn-primary">
+                                    <i class="feather icon-search input-group-text"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </li>*@
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon feather icon-settings"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="~/Admin_Assests/images/user/avatar-1.jpg" class="img-radius" alt="User-Profile-Image">
+                                <span>@ViewBag.Fullname</span>
+                                <a asp-controller="Dashboard" asp-action="Logout" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                            </div>
+                            <ul class="pro-body">
+                                <li><a href="/Useraccounts/Edit/@ViewBag.Userid" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
+                                <li><a asp-controller="Dashboard" asp-action="Logout" class="dud-logout" title="Logout"><i class="feather icon-lock"></i> Logout </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!-- [ Header ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+
+                    @RenderBody()
+                    <!-- /. PAGE WRAPPER  -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Admin_Assests/js/vendor-all.min.js"></script>
+    <script src="~/Admin_Assests/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Admin_Assests/js/pcoded.min.js"></script>
+
+
+</body>
 </html>
+<!--<div id="wrapper">
+    <nav class="navbar navbar-default top-navbar" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/Dashboard/Dashboard"><strong>Hope Shop</strong></a>
+
+            <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
+        </div>
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        <a href="/Useraccounts/Edit/@ViewBag.Userid"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>-->
+<!-- /.dropdown-user -->
+<!--</li>-->
+<!-- /.dropdown -->
+<!--</ul>
+</nav>-->
+<!--/. NAV TOP  -->
+<!--<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <li>
+                <a href="/Dashboard/Dashboard"><i class="fa fa-dashboard"></i> Home </a>
+            </li>
+            <li>
+                <a href="/Useraccounts/Index"><i class="fa fa-bar-chart-o"></i> Users </a>
+            </li>
+            <li>
+                <a href="/Category1/Index"><i class="fa fa-qrcode"></i> Categories</a>
+            </li>
+            <li>
+                <a href="/Shop1/Index"><i class="fa fa-table"></i> Stores</a>
+            </li>
+            <li>
+                <a href="/Orderproducts/Index"><i class="fa fa-table"></i>Products</a>
+            </li>
+            <li>
+                <a href="/Contactus/Index"><i class="fa fa-qrcode"></i> Contact Us Messages</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-sitemap"></i> Manage Pages <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="/Mainpages/Index"> Home Page </a>
+                    </li>
+                    <li>
+                        <a href="/Testimonials/Index"> Testimonial</a>
+                    </li>
+                    <li>
+                        <a href="/Aboutus/Index"> About Us</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</nav>-->
+<!-- /. NAV SIDE  -->
+<!--<div id="page-wrapper">
+    @RenderBody()-->
+<!-- /. PAGE WRAPPER  -->
+<!--</div>
+</div>-->

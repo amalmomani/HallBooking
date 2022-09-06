@@ -13,55 +13,162 @@
 </head>
 <body>
 
-<h4>Useraccount</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Register">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Fullname" class="control-label"></label>
-                <input asp-for="Fullname" class="form-control" />
-                <span asp-validation-for="Fullname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phonenumber" class="control-label"></label>
-                <input asp-for="Phonenumber" class="form-control" />
-                <span asp-validation-for="Phonenumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Roleid" class="control-label"></label>
-                <select asp-for="Roleid" class ="form-control" asp-items="ViewBag.Roleid"></select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <h4>Useraccount</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Register">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Fullname" class="control-label"></label>
+                    <input asp-for="Fullname" class="form-control" />
+                    <span asp-validation-for="Fullname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Phonenumber" class="control-label"></label>
+                    <input asp-for="Phonenumber" class="form-control" />
+                    <span asp-validation-for="Phonenumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageFile" class="control-label"></label>
+                    <input asp-for="ImageFile" class="form-control"accept="image/*" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Roleid" class="control-label"></label>
+                    <select asp-for="Roleid" class="form-control" asp-items="ViewBag.Roleid"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+
+
     </div>
-  
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login V16</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/login/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--=========================================~/login/======================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--=========================================~/login/======================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--=========================================~/login/======================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/animate/animate.css">
+    <!--=========================================~/login/======================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--=========================================~/login/======================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/animsition/css/animsition.min.css">
+    <!--=========================================~/login/======================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/select2/select2.min.css">
+    <!--=========================================~/login/======================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/daterangepicker/daterangepicker.css">
+    <!--=========================================~/login/======================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/login/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('/login/images/bg-01.jpg');">
+            <div class="wrap-login100 p-t-30 p-b-50">
+                <span class="login100-form-title p-b-41">
+                    Account Login
+                </span>
+                <form class="login100-form validate-form p-b-33 p-t-5">
+
+
+
+                    <div class="form-group">
+                        <div class="wrap-input100 validate-input" data-validate="Enter username">
+                            <input class="input100" asp-for="Fullname" placeholder="User name" />
+                            <span class="focus-input100" asp-validation-for="Fullname" data-placeholder="&#xe82a;"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="wrap-input100 validate-input" data-validate="Enter username">
+                            <input class="input100" asp-for="Phonenumber" placeholder="Phone Number" />
+                            <span class="focus-input100" asp-validation-for="Phonenumber" data-placeholder="&#xe82a;"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="wrap-input100 validate-input" data-validate="Enter username">
+                            <input class="input100" asp-for="ImageFile" placeholder="Image File" />
+                            <span class="focus-input100" asp-validation-for="ImageFile" data-placeholder="&#xe82a;"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="wrap-input100 validate-input" data-validate="Enter username">
+                            <input class="input100" asp-for="Email" placeholder="Email" />
+                            <span class="focus-input100" asp-validation-for="Email" data-placeholder="&#xe82a;"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="wrap-input100 validate-input" data-validate="Enter username">
+                            <input class="input100" asp-for="Password" placeholder="Password" />
+                            <span class="focus-input100" asp-validation-for="Password" data-placeholder="&#xe82a;"></span>
+                        </div>
+                    </div>
+                   
+
+                    <div class="container-login100-form-btn m-t-32">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/animsition/js/animsition.min.js"></script>
+    <!--=========~/login/======================================================================================-->
+    <script src="~/login/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--=========~/login/======================================================================================-->
+    <script src="~/login/vendor/select2/select2.min.js"></script>
+    <!--=========~/login/======================================================================================-->
+    <script src="~/login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/login/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--=========~/login/======================================================================================-->
+    <script src="~/login/vendor/countdowntime/countdowntime.js"></script>
+    <!--=========~/login/======================================================================================-->
+    <script src="~/login/js/main.js"></script>
+    
 </body>
 </html>
