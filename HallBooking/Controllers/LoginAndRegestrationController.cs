@@ -40,7 +40,7 @@ namespace HallBooking.Controllers
                         //Guid.NewGuid : generate unique string before image name ;
                         ////2- generate image name and add unique string
                         string fileName = Guid.NewGuid().ToString() + "_" + useraccount.ImageFile.FileName;
-                        string path = Path.Combine(w3rootpath + "/Image/" + fileName);
+                        string path = Path.Combine(w3rootpath + "/Images/" + fileName);
                         //4-create Image inside image file in w3root folder
                         using (var fileStream = new FileStream(path, FileMode.Create))
                         {
