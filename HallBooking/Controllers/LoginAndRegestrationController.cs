@@ -20,13 +20,15 @@ namespace HallBooking.Controllers
             _context = context;
             this.webHostEnviroment = webHostEnviroment;
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(decimal id, [Bind("Userid,Fullname,Phonenumber,Image,Email,Password,Roleid,ImageFile")] Useraccount useraccount)
         {
 
             if (ModelState.IsValid)
             {
-                HttpContext.Session.SetInt32("flag", 1);
-                ViewBag.flag = HttpContext.Session.GetInt32("flag");
+                //HttpContext.Session.SetInt32("flag", 1);
+                //ViewBag.flag = HttpContext.Session.GetInt32("flag");
 
                 var exist = _context.Useraccounts.Where(data => data.Email == useraccount.Email).SingleOrDefault();
                 if (exist == null)
@@ -50,23 +52,61 @@ namespace HallBooking.Controllers
                     useraccount.Roleid = 1;
                     _context.Add(useraccount);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("Login", "LoginRegister");
+                    return RedirectToAction("Login", "LoginAndRegestration");
 
 
                 }
-                else
-                {
-                    HttpContext.Session.SetInt32("flag", 0);
-                    ViewBag.flag = HttpContext.Session.GetInt32("flag");
-                }
+                //else
+                //{
+                //    HttpContext.Session.SetInt32("flag", 0);
+                //    ViewBag.flag = HttpContext.Session.GetInt32("flag");
+                //}
             }
             return View(useraccount);
         }
 
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login([Bind("Email,Password")] Useraccount useraccountt)
+        {
+            //var mainpage = _context.Mainpages.ToList();
+            var user = _context.Useraccounts.ToList();
+            // Aggregate the 2 models using Tuple 
+            //var home = Tuple.Create<IEnumerable<Mainpage>, IEnumerable<Useraccount>>(mainpage, user);
+            var auth = _context.Useraccounts.Where(data => data.Email == useraccountt.Email && data.Password == useraccountt.Password).SingleOrDefault();
+            //ViewBag.flag = HttpContext.Session.GetInt32("flag");
 
-   
-            public IActionResult Register()
+            if (auth != null)
+            {
+                switch (auth.Roleid)
+                {
+                    case 1:
+                        // Customer
+                        //HttpContext.Session.SetInt32("Userid", (int)auth.Userid);
+                        //HttpContext.Session.SetString("Fullname", auth.Fullname);
+                        //HttpContext.Session.SetString("Email", auth.Email);
+
+                        return RedirectToAction("Index", "Home");
+                    case 2:
+                        // Admin
+                        //HttpContext.Session.SetInt32("Userid", (int)auth.Userid);
+                        //HttpContext.Session.SetString("Fullname", auth.Fullname);
+                        //HttpContext.Session.SetString("Email", auth.Email);
+
+                        return RedirectToAction("Index", "Home");
+                }
+            }
+            //else
+            //{
+            //    HttpContext.Session.SetInt32("flag", 0);
+            //    ViewBag.flag = HttpContext.Session.GetInt32("flag");
+
+            //}
+            return View();
+        }
+
+        public IActionResult Register()
         {
             return View();
         }
