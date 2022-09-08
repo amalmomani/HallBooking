@@ -50,7 +50,7 @@ namespace HallBooking.Controllers
                     useraccount.Roleid = 1;
                     _context.Add(useraccount);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("Login", "LoginRegister");
+                    return RedirectToAction("Login", "LoginAndRegestration");
 
 
                 }
