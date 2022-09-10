@@ -2,9 +2,11 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/Admin.cshtml";
+
 }
 
-<h1>Index</h1>
+@*<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -34,32 +36,80 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hallname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hallddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hallsize)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Isbooked)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Categoryid)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Hallid">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Hallid">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Hallid">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hallname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hallddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hallsize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Isbooked)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Categoryid)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Hallid">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Hallid">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Hallid">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
-</table>
+</table>*@
+
+
+
+
+<div class="row">
+    <div class="col-md-12 col-lg-12 col-sm-12">
+        <div class="white-box">
+            <div class="d-md-flex mb-3">
+                <h3 class="box-title mb-0">Halls</h3>
+               
+            </div>
+            <div class="table-responsive">
+                <table class="table no-wrap">
+                    <thead>
+                        <tr>
+                            <th class="border-top-0">Name</th>
+                            <th class="border-top-0">Address</th>
+                            <th class="border-top-0">Size</th>
+                            <th class="border-top-0">Price</th>
+                            <th class="border-top-0">Is Booked</th>
+                            <th class="border-top-0">Category</th>
+                            <th class="border-top-0"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Hallname)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Hallddress)</td>
+                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Hallsize)</td>
+                            <td><span class="text-success">@Html.DisplayFor(modelItem => item.Price)</span></td>
+                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Hallsize)</td>
+                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Price)</td>
+                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Isbooked)</td>
+                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Category.Name)</td>
+                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Category.Name)</td>
+                            
+
+                        </tr>
+                        }
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
