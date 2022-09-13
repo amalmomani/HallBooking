@@ -50,6 +50,7 @@ namespace HallBooking.Controllers
             ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid");
             return View();
         }
+       
 
         // POST: Testimonials/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
