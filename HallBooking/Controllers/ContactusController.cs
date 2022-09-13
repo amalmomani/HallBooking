@@ -47,6 +47,10 @@ namespace HallBooking.Controllers
         {
             return View();
         }
+        public IActionResult Contactus()
+        {
+            return View();
+        }
 
         // POST: Contactus/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 

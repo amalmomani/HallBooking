@@ -22,8 +22,10 @@ namespace HallBooking.Controllers
         {
             ViewBag.numberofcustomer = _context.Useraccounts.Count();
             ViewBag.numberofHalls = _context.Halls.Count();
-            ViewBag.numberofBook = _context.Banks.Count();
-            
+            ViewBag.numberofBook = _context.Books.Count();
+            ViewBag.number_of_Hallcategories = _context.Hallcategories.Count();
+
+
             ViewBag.numberofcategories = _context.Hallcategories.Count();
 
 
