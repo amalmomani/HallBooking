@@ -10,6 +10,7 @@ namespace HallBooking.Models
         public Hall()
         {
             Books = new HashSet<Book>();
+            Hallactives = new HashSet<Hallactive>();
         }
 
         public decimal Hallid { get; set; }
@@ -19,8 +20,10 @@ namespace HallBooking.Models
         public decimal? Price { get; set; }
         public bool? Isbooked { get; set; }
         public decimal? Categoryid { get; set; }
+        public string Imagepath { get; set; }
 
         public virtual Hallcategory Category { get; set; }
         public virtual ICollection<Book> Books { get; set; }
+        public virtual ICollection<Hallactive> Hallactives { get; set; }
     }
 }

@@ -18,11 +18,12 @@ namespace HallBooking.Models
         }
 
         public virtual DbSet<Aboutu> Aboutus { get; set; }
+        public virtual DbSet<Activeday> Activedays { get; set; }
         public virtual DbSet<Bank> Banks { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Contactu> Contactus { get; set; }
-       
         public virtual DbSet<Hall> Halls { get; set; }
+        public virtual DbSet<Hallactive> Hallactives { get; set; }
         public virtual DbSet<Hallcategory> Hallcategories { get; set; }
         public virtual DbSet<Mainpage> Mainpages { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
@@ -35,7 +36,7 @@ namespace HallBooking.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseOracle("USER ID=TAH13_USER13;PASSWORD=Ahmad118513;DATA SOURCE=94.56.229.181:3488/traindb");
+                optionsBuilder.UseOracle("USER ID=TAH13_User13;PASSWORD=Ahmad118513;DATA SOURCE=94.56.229.181:3488/traindb");
             }
         }
 
@@ -100,6 +101,21 @@ namespace HallBooking.Models
                     .HasMaxLength(1000)
                     .IsUnicode(false)
                     .HasColumnName("TEXT8");
+            });
+
+            modelBuilder.Entity<Activeday>(entity =>
+            {
+                entity.ToTable("ACTIVEDAYS");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("NUMBER")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("NAME");
             });
 
             modelBuilder.Entity<Bank>(entity =>
@@ -211,8 +227,6 @@ namespace HallBooking.Models
                     .HasColumnName("SUBJECT");
             });
 
-           
-
             modelBuilder.Entity<Hall>(entity =>
             {
                 entity.ToTable("HALL");
@@ -240,6 +254,11 @@ namespace HallBooking.Models
                     .HasColumnType("NUMBER")
                     .HasColumnName("HALLSIZE");
 
+                entity.Property(e => e.Imagepath)
+                    .HasMaxLength(200)
+                    .IsUnicode(false)
+                    .HasColumnName("IMAGEPATH");
+
                 entity.Property(e => e.Isbooked)
                     .HasPrecision(1)
                     .HasColumnName("ISBOOKED");
@@ -253,6 +272,40 @@ namespace HallBooking.Models
                     .HasForeignKey(d => d.Categoryid)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("FKCATE");
+            });
+
+            modelBuilder.Entity<Hallactive>(entity =>
+            {
+                entity.ToTable("HALLACTIVE");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("NUMBER")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("ID");
+
+                entity.Property(e => e.Activedayid)
+                    .HasColumnType("NUMBER(38)")
+                    .HasColumnName("ACTIVEDAYID");
+
+                entity.Property(e => e.Hallid)
+                    .HasColumnType("NUMBER(38)")
+                    .HasColumnName("HALLID");
+
+                entity.Property(e => e.Isbook)
+                    .HasPrecision(1)
+                    .HasColumnName("ISBOOK");
+
+                entity.HasOne(d => d.Activeday)
+                    .WithMany(p => p.Hallactives)
+                    .HasForeignKey(d => d.Activedayid)
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("ACTI");
+
+                entity.HasOne(d => d.Hall)
+                    .WithMany(p => p.Hallactives)
+                    .HasForeignKey(d => d.Hallid)
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("HALLSIDD");
             });
 
             modelBuilder.Entity<Hallcategory>(entity =>
