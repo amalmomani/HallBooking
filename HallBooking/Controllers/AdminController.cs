@@ -1,5 +1,6 @@
 ﻿using HallBooking.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,12 @@ namespace HallBooking.Controllers
         }
         public IActionResult Index()
         {
+
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+
+
             ViewBag.numberofcustomer = _context.Useraccounts.Count();
             ViewBag.numberofHalls = _context.Halls.Count();
             ViewBag.numberofBook = _context.Books.Count();

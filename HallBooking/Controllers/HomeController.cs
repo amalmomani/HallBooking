@@ -12,15 +12,22 @@ namespace HallBooking.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+       
+        private readonly ModelContext _context;
+       
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, ModelContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var category = _context.Hallcategories.ToList();
+            return View(category);
+
         }
 
         public IActionResult Privacy()

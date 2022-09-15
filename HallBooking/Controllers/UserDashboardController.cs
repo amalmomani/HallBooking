@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HallBooking.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,17 @@ namespace HallBooking.Controllers
 {
     public class UserDashboardController : Controller
     {
-        public IActionResult Index()
+
+        private readonly ModelContext _context;
+        public UserDashboardController(ModelContext context)
         {
-            return View();
+            _context = context;
+            //assign initial value variable
+        }
+        public IActionResult Index(int Categoryid)
+        {
+            var holls = _context.Halls.Where(x => x.Hallid == Categoryid);
+            return View(holls);
         }
     }
 }
