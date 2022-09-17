@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HallBooking.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace HallBooking.Controllers
 {
     public class HallsController : Controller
     {
         private readonly ModelContext _context;
-
-        public HallsController(ModelContext context)
+        private readonly IWebHostEnvironment webHostEnviroment;
+        public HallsController(ModelContext context, IWebHostEnvironment webHostEnviroment)
         {
             _context = context;
+            this.webHostEnviroment = webHostEnviroment;
         }
 
         // GET: Halls
@@ -56,12 +59,28 @@ namespace HallBooking.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Hallid,Hallname,Hallddress,Hallsize,Price,Isbooked,Categoryid")] Hall hall)
+        public async Task<IActionResult> Create([Bind("Hallid,Hallname,Hallddress,Hallsize,Price,Isbooked,Categoryid,ImageFile")] Hall hall)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(hall);
-                await _context.SaveChangesAsync();
+                if (hall.ImageFile != null)
+                {
+                    string wwwrootPath = webHostEnviroment.WebRootPath;
+                    string fileName = Guid.NewGuid().ToString() + "_" + hall.ImageFile.FileName;
+                    //1523f14f-5535-40c6-82bb-7d3b9edf2e75_piza2.jpg
+                    string path = Path.Combine(wwwrootPath + "/Images/" + fileName);
+                    using (var filestream = new FileStream(path, FileMode.Create))
+                    {
+                        await hall.ImageFile.CopyToAsync(filestream);
+                    }
+                    hall.Imagepath = fileName;
+                    _context.Add(hall);
+                    await _context.SaveChangesAsync();
+                }
+
+
+
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Categoryid"] = new SelectList(_context.Hallcategories, "Categoryid", "Categoryid", hall.Categoryid);

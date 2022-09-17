@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
@@ -21,7 +23,8 @@ namespace HallBooking.Models
         public bool? Isbooked { get; set; }
         public decimal? Categoryid { get; set; }
         public string Imagepath { get; set; }
-
+        [NotMapped]
+        public virtual IFormFile ImageFile { get; set; }
         public virtual Hallcategory Category { get; set; }
         public virtual ICollection<Book> Books { get; set; }
         public virtual ICollection<Hallactive> Hallactives { get; set; }
