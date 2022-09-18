@@ -6,6 +6,104 @@
 }
 
 
+<div class="hero-wrap js-fullheight" style="background-image: url('/Home_Assests/images/bg_1.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section testimony-section" id="test">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+                <h2 class="mb-4">Our satisfied customer says</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
+            </div>
+        </div>
+        <div class="row ftco-animate">
+            <div class="col-md-12">
+                <div class="carousel-testimony owl-carousel ftco-owl">
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_1.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text">
+                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Mark Web</p>
+                                <span class="position">Marketing Manager</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_2.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text">
+                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Mark Web</p>
+                                <span class="position">Interface Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_3.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text">
+                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Mark Web</p>
+                                <span class="position">UI Designer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_1.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text">
+                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Mark Web</p>
+                                <span class="position">Web Developer</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap p-4 pb-5">
+                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_1.jpg)">
+                                <span class="quote d-flex align-items-center justify-content-center">
+                                    <i class="icon-quote-left"></i>
+                                </span>
+                            </div>
+                            <div class="text">
+                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                                <p class="name">Mark Web</p>
+                                <span class="position">System Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
 
     <div class="container">
@@ -14,16 +112,19 @@
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group">
+
                         <label asp-for="Message" class="control-label"></label>
                         <input asp-for="Message" class="form-control" />
-                        <span asp-validation-for="Message" class="text-danger"></span>
+
+
+
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" hidden>
                         <label asp-for="Testimage" class="control-label"></label>
                         <input asp-for="Testimage" class="form-control" />
                         <span asp-validation-for="Testimage" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" hidden>
                         <label asp-for="Status" class="control-label"></label>
                         <input asp-for="Status" class="form-control" />
                         <span asp-validation-for="Status" class="text-danger"></span>
@@ -32,15 +133,28 @@
                         <label asp-for="Userid" class="control-label"></label>
                         <select asp-for="Userid" class="form-control" asp-items="ViewBag.Userid"></select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" hidden>
                         <label asp-for="Name" class="control-label"></label>
                         <input asp-for="Name" class="form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                    <div class=" row" style="justify-content:center">
+
+                        <div class="form-group">
+                            <input type="submit" class="template-btn mt-3 btn btn-lg btn-dark" value="Submit" />
+                        </div>
                     </div>
                 </form>
+                <div class="info-hide" id="hide" style="display: none; padding:10px; font-size:20px; color:red">Thank you! Your Review was sent. </div>
+
             </div>
         </div>
     </div>
+
+</section>
+<script>function hideText() {
+        $("#hide").fadeIn()
+        setTimeout(() => {
+            $("#hide").fadeOut()
+        }, 10000);
+    }</script>
