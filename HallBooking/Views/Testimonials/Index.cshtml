@@ -37,21 +37,25 @@
             </td>
             @if (item.Status == true)
             {
-                <td >
+                <td>
                     Accepted
 
                 </td>
             }
-            else
+            else if (item.Status == false)
             {
                 <td>
                     Rejected
 
                 </td>
             }
+            else
+            {
+                <td>
+                    Under process
 
-
-
+                </td>
+            }
             <td>
                 <a style="padding:5px" class="btn-info" asp-action="Edit" asp-route-id="@item.Testmoninalid">Accept or Reject</a>
                 <a style="padding:5px" class="btn-danger" asp-action="Delete" asp-route-id="@item.Testmoninalid">Delete</a>
