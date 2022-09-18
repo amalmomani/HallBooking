@@ -10,13 +10,16 @@
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-
+            <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Hotel</span></p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Testimonial</h1>
+            </div>
         </div>
     </div>
 </div>
 
 <section class="ftco-section testimony-section" id="test">
-    <div class="container">
+    @*<div class="container">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
                 <h2 class="mb-4">Our satisfied customer says</h2>
@@ -26,80 +29,29 @@
         <div class="row ftco-animate">
             <div class="col-md-12">
                 <div class="carousel-testimony owl-carousel ftco-owl">
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_1.jpg)">
-                                <span class="quote d-flex align-items-center justify-content-center">
-                                    <i class="icon-quote-left"></i>
-                                </span>
+                    @foreach (var item in Model)
+                    {
+                        if (item.Status == true)
+                        {
+                        <div class="item">
+                            <div class="testimony-wrap p-4 pb-5">
+                                <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_1.jpg)">
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                        <i class="icon-quote-left"></i>
+                                    </span>
+                                </div>
+                                <div class="text">
+                                    <p class="mb-5">@Html.DisplayFor(modelItem => item.Message)</p>
+                                    <p class="name">@Html.DisplayFor(modelItem => item.User.Fullname)</p>
+                                    <span class="position"></span>
+                                </div>
                             </div>
-                            <div class="text">
-                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Mark Web</p>
-                                <span class="position">Marketing Manager</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_2.jpg)">
-                                <span class="quote d-flex align-items-center justify-content-center">
-                                    <i class="icon-quote-left"></i>
-                                </span>
-                            </div>
-                            <div class="text">
-                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Mark Web</p>
-                                <span class="position">Interface Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_3.jpg)">
-                                <span class="quote d-flex align-items-center justify-content-center">
-                                    <i class="icon-quote-left"></i>
-                                </span>
-                            </div>
-                            <div class="text">
-                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Mark Web</p>
-                                <span class="position">UI Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_1.jpg)">
-                                <span class="quote d-flex align-items-center justify-content-center">
-                                    <i class="icon-quote-left"></i>
-                                </span>
-                            </div>
-                            <div class="text">
-                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Mark Web</p>
-                                <span class="position">Web Developer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_1.jpg)">
-                                <span class="quote d-flex align-items-center justify-content-center">
-                                    <i class="icon-quote-left"></i>
-                                </span>
-                            </div>
-                            <div class="text">
-                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Mark Web</p>
-                                <span class="position">System Analyst</span>
-                            </div>
-                        </div>
-                    </div>
+                        </div>}
+                    }
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
 
 
@@ -152,7 +104,8 @@
     </div>
 
 </section>
-<script>function hideText() {
+<script>
+    function hideText() {
         $("#hide").fadeIn()
         setTimeout(() => {
             $("#hide").fadeOut()

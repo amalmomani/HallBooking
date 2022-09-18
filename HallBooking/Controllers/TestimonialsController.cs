@@ -24,6 +24,11 @@ namespace HallBooking.Controllers
             var modelContext = _context.Testimonials.Include(t => t.User);
             return View(await modelContext.ToListAsync());
         }
+        public async Task<IActionResult> HomeIndex()
+        {
+            var modelContext = _context.Testimonials.Include(t => t.User);
+            return View(await modelContext.ToListAsync());
+        }
 
         // GET: Testimonials/Details/5
         public async Task<IActionResult> Details(decimal? id)
