@@ -92,9 +92,9 @@
                             <th class="border-top-0">Address</th>
                             <th class="border-top-0">Size</th>
                             <th class="border-top-0">Price</th>
-                            <th class="border-top-0">Is Booked</th>
+                            @*<th class="border-top-0">Is Booked</th>*@
                             <th class="border-top-0">Category</th>
-                            <th class="border-top-0"></th>
+                            <th class="border-top-0">Hall Image</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -106,7 +106,7 @@
                             <td> @Html.DisplayFor(modelItem => item.Hallddress)</td>
                             <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Hallsize)</td>
                             <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Price)</td>
-                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Isbooked)</td>
+                            @*<td class="txt-oflo">@Html.DisplayFor(modelItem => item.Isbooked)</td>*@
                             <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Category.Name)</td>
                             <td>
                                 <img src=@Url.Content("~/Images/"+item.Imagepath) style="border-radius:20%;" width="100" height="100" />

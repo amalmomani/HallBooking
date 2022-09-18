@@ -156,5 +156,6 @@ namespace HallBooking.Controllers
         {
             return _context.Testimonials.Any(e => e.Testmoninalid == id);
         }
+      
     }
 }
