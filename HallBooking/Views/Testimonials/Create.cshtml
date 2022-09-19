@@ -12,7 +12,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
             <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
                 <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Hotel</span></p>
-                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Testimonial</h1>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Testimonials</h1>
             </div>
         </div>
     </div>
@@ -67,9 +67,6 @@
 
                         <label asp-for="Message" class="control-label"></label>
                         <input asp-for="Message" class="form-control" />
-
-
-
                     </div>
                     <div class="form-group" hidden>
                         <label asp-for="Testimage" class="control-label"></label>
@@ -104,10 +101,3 @@
     </div>
 
 </section>
-<script>
-    function hideText() {
-        $("#hide").fadeIn()
-        setTimeout(() => {
-            $("#hide").fadeOut()
-        }, 10000);
-    }</script>

@@ -1,4 +1,5 @@
 ﻿using HallBooking.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -30,6 +31,29 @@ namespace HallBooking.Controllers
         {
             var modelContext = _context.Halls.Include(h => h.Category);
             return View(await modelContext.ToListAsync());
+        }
+        public IActionResult Add(int id)
+        {
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            var hall = _context.Halls.Where(x => x.Hallid == id);
+
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Add(int id, DateTime startDate, DateTime endDate)
+        {
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+
+            var hall = _context.Halls.Where(x => x.Hallid == id).FirstOrDefault();
+            Book book = new Book();
+            book.Userid = ViewBag.Userid;
+            book.Startdate = startDate;
+            book.Enddate = endDate;
+            book.Hallid = id;
+            _context.Books.Add(book);
+            await _context.SaveChangesAsync();
+            return View();
         }
     }
 }

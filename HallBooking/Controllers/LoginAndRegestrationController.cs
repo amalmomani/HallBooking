@@ -83,9 +83,9 @@ namespace HallBooking.Controllers
                 {
                     case 1:
                         // Customer
-                        //HttpContext.Session.SetInt32("Userid", (int)auth.Userid);
-                        //HttpContext.Session.SetString("Fullname", auth.Fullname);
-                        //HttpContext.Session.SetString("Email", auth.Email);
+                        HttpContext.Session.SetInt32("Userid", (int)auth.Userid);
+                        HttpContext.Session.SetString("Fullname", auth.Fullname);
+                        HttpContext.Session.SetString("Email", auth.Email);
 
                         return RedirectToAction("Index", "Home");
                     case 2:

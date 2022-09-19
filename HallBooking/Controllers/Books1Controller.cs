@@ -6,27 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HallBooking.Models;
-using Microsoft.AspNetCore.Http;
 
 namespace HallBooking.Controllers
 {
-    public class BooksController : Controller
+    public class Books1Controller : Controller
     {
         private readonly ModelContext _context;
 
-        public BooksController(ModelContext context)
+        public Books1Controller(ModelContext context)
         {
             _context = context;
         }
 
-        // GET: Books
+        // GET: Books1
         public async Task<IActionResult> Index()
         {
             var modelContext = _context.Books.Include(b => b.Hall).Include(b => b.User);
             return View(await modelContext.ToListAsync());
         }
 
-        // GET: Books/Details/5
+        // GET: Books1/Details/5
         public async Task<IActionResult> Details(decimal? id)
         {
             if (id == null)
@@ -45,7 +44,8 @@ namespace HallBooking.Controllers
 
             return View(book);
         }
-      
+
+        // GET: Books1/Create
         public IActionResult Create()
         {
             ViewData["Hallid"] = new SelectList(_context.Halls, "Hallid", "Hallid");
@@ -71,40 +71,7 @@ namespace HallBooking.Controllers
             return View(book);
         }
 
-
-
-        // GET: Books/Create
-        //public IActionResult Create(decimal Hallid)
-        //{
-        //    ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
-        //    // ViewData["Hallid"] = new SelectList(_context.Halls, "Hallid", "Hallid");
-        //    //ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid");
-        //    //var hall = _context.Halls.Where(x => x.Hallid == id).FirstOrDefault();
-
-        //    return View();
-        //}
-
-        //// POST: Books/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("Id,Userid,Hallid,Startdate,Enddate,Status")] Book book)
-        //{
-        //    ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
-        //    book.Userid = ViewBag.Userid;
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(book);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    //ViewData["Hallid"] = new SelectList(_context.Halls, "Hallid", "Hallid", book.Hallid);
-        //    return View(book);
-        //}
-
-        // GET: Books/Edit/5
+        // GET: Books1/Edit/5
         public async Task<IActionResult> Edit(decimal? id)
         {
             if (id == null)
@@ -122,7 +89,7 @@ namespace HallBooking.Controllers
             return View(book);
         }
 
-        // POST: Books/Edit/5
+        // POST: Books1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -159,7 +126,7 @@ namespace HallBooking.Controllers
             return View(book);
         }
 
-        // GET: Books/Delete/5
+        // GET: Books1/Delete/5
         public async Task<IActionResult> Delete(decimal? id)
         {
             if (id == null)
@@ -179,7 +146,7 @@ namespace HallBooking.Controllers
             return View(book);
         }
 
-        // POST: Books/Delete/5
+        // POST: Books1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(decimal id)
