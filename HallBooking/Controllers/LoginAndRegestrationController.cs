@@ -87,7 +87,7 @@ namespace HallBooking.Controllers
                         HttpContext.Session.SetString("Fullname", auth.Fullname);
                         HttpContext.Session.SetString("Email", auth.Email);
 
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Category", "UserDashboard");
                     case 2:
                         // Admin
                         HttpContext.Session.SetInt32("Userid", (int)auth.Userid);

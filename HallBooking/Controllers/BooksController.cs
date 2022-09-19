@@ -22,6 +22,7 @@ namespace HallBooking.Controllers
         // GET: Books
         public async Task<IActionResult> Index()
         {
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
             var modelContext = _context.Books.Include(b => b.Hall).Include(b => b.User);
             return View(await modelContext.ToListAsync());
         }
