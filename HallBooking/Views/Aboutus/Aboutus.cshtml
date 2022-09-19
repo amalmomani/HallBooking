@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<HallBooking.Models.Aboutu>
 @{
     Layout = "~/Views/Shared/Home.cshtml";
 }
@@ -19,25 +19,35 @@
 <section class="ftco-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="intro">
-                    <h3><span>01</span> Travel</h3>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="intro">
+                        <h3><span>01</span> Travel</h3>
+
+                        @*<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>*@
+                        <p> @item.Text2</p>
+
+
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="intro">
-                    <h3><span>02</span> Experience</h3>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <div class="col-md-4">
+                    <div class="intro">
+                        <h3><span>02</span> Experience</h3>
+                        @*<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>*@
+                        <p>@item.Text3</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="intro">
-                    <h3><span>03</span> Relax</h3>
-                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                <div class="col-md-4">
+                    <div class="intro">
+                        <h3><span>03</span> Relax</h3>
+                        @*<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>*@
+                        <p>@item.Text4</p>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
+
     </div>
 </section>
 
@@ -49,7 +59,7 @@
                     <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                         <div class="block-18 text-center">
                             <div class="text">
-                                <strong class="number" data-number="100000">0</strong>
+                                <strong class="number" data-number="@ViewBag.numberofTestimonials">0</strong>
                                 <span>Happy Customers</span>
                             </div>
                         </div>
@@ -65,8 +75,8 @@
                     <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
                         <div class="block-18 text-center">
                             <div class="text">
-                                <strong class="number" data-number="87000">0</strong>
-                                <span>Hotels</span>
+                                <strong class="number" data-number=" @ViewBag.numberofHalls">0</strong>
+                                <span>Halls</span>
                             </div>
                         </div>
                     </div>
@@ -83,105 +93,39 @@
         </div>
     </div>
 </section>
-
+<br />
+<br />
 <section class="ftco-about d-md-flex">
     <div class="one-half img" style="background-image: url(/Home_Assests/images/about.jpg);"></div>
     <div class="one-half ftco-animate">
         <div class="heading-section ftco-animate ">
             <h2 class="mb-4">The Best Travel Agency</h2>
         </div>
-        <div>
-            <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-        </div>
+
+        @foreach (var item in Model)
+        {
+            <div>
+                <p>@item.Text1</p>
+            </div>
+        }
     </div>
 </section>
 
-<section class="ftco-section testimony-section">
-    <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                <h2 class="mb-4">Our satisfied customer says</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
-            </div>
-        </div>
-        <div class="row ftco-animate">
-            <div class="col-md-12">
-                <div class="carousel-testimony owl-carousel ftco-owl">
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_1.jpg)">
-                                <span class="quote d-flex align-items-center justify-content-center">
-                                    <i class="icon-quote-left"></i>
-                                </span>
-                            </div>
-                            <div class="text">
-                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Mark Web</p>
-                                <span class="position">Marketing Manager</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_2.jpg)">
-                                <span class="quote d-flex align-items-center justify-content-center">
-                                    <i class="icon-quote-left"></i>
-                                </span>
-                            </div>
-                            <div class="text">
-                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Mark Web</p>
-                                <span class="position">Interface Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_3.jpg)">
-                                <span class="quote d-flex align-items-center justify-content-center">
-                                    <i class="icon-quote-left"></i>
-                                </span>
-                            </div>
-                            <div class="text">
-                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Mark Web</p>
-                                <span class="position">UI Designer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_1.jpg)">
-                                <span class="quote d-flex align-items-center justify-content-center">
-                                    <i class="icon-quote-left"></i>
-                                </span>
-                            </div>
-                            <div class="text">
-                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Mark Web</p>
-                                <span class="position">Web Developer</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="testimony-wrap p-4 pb-5">
-                            <div class="user-img mb-5" style="background-image: url(/Home_Assests/images/person_1.jpg)">
-                                <span class="quote d-flex align-items-center justify-content-center">
-                                    <i class="icon-quote-left"></i>
-                                </span>
-                            </div>
-                            <div class="text">
-                                <p class="mb-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                                <p class="name">Mark Web</p>
-                                <span class="position">System Analyst</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <section class="ftco-section services-section bg-light">
     <div class="container">
@@ -226,26 +170,5 @@
     </div>
 </section>
 
-<section class="ftco-section-parallax">
-    <div class="parallax-img d-flex align-items-center">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                    <h2>Subcribe to our Newsletter</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in</p>
-                    <div class="row d-flex justify-content-center mt-5">
-                        <div class="col-md-8">
-                            <form action="#" class="subscribe-form">
-                                <div class="form-group d-flex">
-                                    <input type="text" class="form-control" placeholder="Enter email address">
-                                    <input type="submit" value="Subscribe" class="submit px-3">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 

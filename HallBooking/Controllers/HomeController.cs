@@ -25,8 +25,15 @@ namespace HallBooking.Controllers
 
         public IActionResult Index()
         {
+
+            ViewBag.numberofcustomer = _context.Testimonials.Count();
+            ViewBag.numberofHalls = _context.Halls.Count();
             var category = _context.Hallcategories.ToList();
-            return View(category);
+            var Homepage = _context.Mainpages.ToList();
+            var about = _context.Aboutus.ToList();
+            var halls = _context.Halls.ToList();
+            var home = Tuple.Create<IEnumerable<Hallcategory>, IEnumerable<Mainpage>,IEnumerable<Aboutu>,IEnumerable<Hall>>(category, Homepage, about, halls);
+            return View(home);
 
         }
 

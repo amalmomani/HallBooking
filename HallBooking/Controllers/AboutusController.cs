@@ -53,7 +53,14 @@ namespace HallBooking.Controllers
         }
         public IActionResult Aboutus()
         {
-            return View();
+
+            ViewBag.numberofTestimonials = _context.Testimonials.Count();
+            ViewBag.numberofHalls = _context.Halls.Count();
+            var about = _context.Aboutus.ToList();
+            
+
+
+            return View(about);
         }
         // POST: Aboutus/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
