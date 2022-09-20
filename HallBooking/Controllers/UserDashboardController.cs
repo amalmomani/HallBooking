@@ -25,6 +25,11 @@ namespace HallBooking.Controllers
         }
         public async Task<IActionResult> Category()
         {
+
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+
             return View(await _context.Hallcategories.ToListAsync());
         }
         public async Task<IActionResult> Halls()
