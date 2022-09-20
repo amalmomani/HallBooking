@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HallBooking.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace HallBooking.Controllers
 {
@@ -169,6 +170,171 @@ namespace HallBooking.Controllers
 
             return View(useraccount);
         }
+
+        public async Task<IActionResult> EditAdmin(decimal? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var useraccount = await _context.Useraccounts.FindAsync(id);
+            if (useraccount == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+            ViewData["Roleid"] = new SelectList(_context.Roles, "Roleid", "Roleid", useraccount.Roleid);
+            return View(useraccount);
+        }
+
+        // POST: Useraccounts/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditAdmin(decimal id, [Bind("Userid,Fullname,Phonenumber,Image,Email,Password,Roleid,ImageFile")] Useraccount useraccount)
+        {
+            if (id != useraccount.Userid)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (useraccount.ImageFile != null)
+                    {
+                        string w3rootpath = webHostEnviroment.WebRootPath;
+                        string fileName = Guid.NewGuid().ToString() + "_" + useraccount.ImageFile.FileName;
+                        string path = Path.Combine(w3rootpath + "/Images/" + fileName);
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await useraccount.ImageFile.CopyToAsync(fileStream);
+                        }
+                        useraccount.Image = fileName;
+                        await _context.SaveChangesAsync();
+                    }
+                    _context.Update(useraccount);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UseraccountExists(useraccount.Userid))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["Roleid"] = new SelectList(_context.Roles, "Roleid", "Roleid", useraccount.Roleid);
+            return View(useraccount);
+        }
+
+
+
+
+        public async Task<IActionResult> UserEdit(decimal? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var useraccount = await _context.Useraccounts.FindAsync(id);
+            if (useraccount == null)
+            {
+                return NotFound();
+            }
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+            ViewData["Roleid"] = new SelectList(_context.Roles, "Roleid", "Roleid", useraccount.Roleid);
+            return View(useraccount);
+        }
+
+        // POST: Useraccounts/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UserEdit(decimal id, [Bind("Userid,Fullname,Phonenumber,Image,Email,Password,Roleid,ImageFile")] Useraccount useraccount)
+        {
+            if (id != useraccount.Userid)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    if (useraccount.ImageFile != null)
+                    {
+                        string w3rootpath = webHostEnviroment.WebRootPath;
+                        string fileName = Guid.NewGuid().ToString() + "_" + useraccount.ImageFile.FileName;
+                        string path = Path.Combine(w3rootpath + "/Images/" + fileName);
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await useraccount.ImageFile.CopyToAsync(fileStream);
+                        }
+                        useraccount.Image = fileName;
+                        await _context.SaveChangesAsync();
+                    }
+                    _context.Update(useraccount);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UseraccountExists(useraccount.Userid))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Category", "Category1");
+            }
+            ViewData["Roleid"] = new SelectList(_context.Roles, "Roleid", "Roleid", useraccount.Roleid);
+            return View(useraccount);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // POST: Useraccounts/Delete/5
         [HttpPost, ActionName("Delete")]
