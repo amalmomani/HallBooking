@@ -59,7 +59,7 @@ namespace HallBooking.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Hallid,Hallname,Hallddress,Hallsize,Price,Isbooked,Categoryid,ImageFile")] Hall hall)
+        public async Task<IActionResult> Create([Bind("Hallid,Hallname,Hallddress,Imagepath,Hallsize,Price,Isbooked,Categoryid,ImageFile")] Hall hall)
         {
             if (ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace HallBooking.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(decimal id, [Bind("Hallid,Hallname,Hallddress,Hallsize,Price,Isbooked,Categoryid")] Hall hall)
+        public async Task<IActionResult> Edit(decimal id, [Bind("Hallid,Hallname,Hallddress,Imagepath,Hallsize,Price,Isbooked,Categoryid")] Hall hall)
         {
             if (id != hall.Hallid)
             {

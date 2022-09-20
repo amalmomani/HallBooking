@@ -53,17 +53,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Hall.Hallname)
             </td>
-            @if (item.Status == true)
+            @if (item.Status == "Paied")
             {
                 <td>
                     paied
 
                 </td>
             }
-            else if (item.Status == false)
+            else if (item.Status == "Under Process")
             {
                 <td>
-                    not paied
+                    Under Process
+
+                </td>
+            }
+            else if (item.Status == "Unpaied")
+            {
+                <td>
+                    Unpaied
 
                 </td>
             }

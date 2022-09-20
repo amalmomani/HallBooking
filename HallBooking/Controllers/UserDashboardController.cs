@@ -51,7 +51,7 @@ namespace HallBooking.Controllers
             book.Startdate = startDate;
             book.Enddate = endDate;
             book.Hallid = id;
-            book.Status = false;
+            book.Status = "Under Process";
             _context.Books.Add(book);
             await _context.SaveChangesAsync();
             return View();
@@ -71,7 +71,7 @@ namespace HallBooking.Controllers
             ViewBag.emptyorder = 1;
             ViewBag.amount = 1;
             int u = ViewBag.Userid;
-            List<Book> book = _context.Books.Where(x => x.Userid == u && x.Status==false).ToList();
+            List<Book> book = _context.Books.Where(x => x.Userid == u && x.Status=="Accept").ToList();
 
             if (book != null)
             {
@@ -96,7 +96,7 @@ namespace HallBooking.Controllers
                         await _context.SaveChangesAsync();
                         foreach (Book b in book)
                         {
-                            b.Status = true;
+                            b.Status = "Paied";
                             _context.Update(b);
                             await _context.SaveChangesAsync();
                         }

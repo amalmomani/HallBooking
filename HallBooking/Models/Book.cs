@@ -12,7 +12,7 @@ namespace HallBooking.Models
         public decimal? Hallid { get; set; }
         public DateTime? Startdate { get; set; }
         public DateTime? Enddate { get; set; }
-        public bool? Status { get; set; }
+        public string Status { get; set; }
 
         public virtual Hall Hall { get; set; }
         public virtual Useraccount User { get; set; }
