@@ -26,6 +26,12 @@ namespace HallBooking.Controllers
             var modelContext = _context.Books.Include(b => b.Hall).Include(b => b.User);
             return View(await modelContext.ToListAsync());
         }
+        public async Task<IActionResult> Payment()
+        {
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            var modelContext = _context.Books.Include(b => b.Hall).Include(b => b.User);
+            return View(await modelContext.ToListAsync());
+        }
 
         // GET: Books/Details/5
         public async Task<IActionResult> Details(decimal? id)

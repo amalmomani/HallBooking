@@ -1,53 +1,79 @@
-﻿@model IEnumerable<HallBooking.Models.Payment>
+﻿@model IEnumerable<HallBooking.Models.Book>
+
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/User.cshtml";
 }
 
-<h1>Index</h1>
 
+<div class="hero-wrap js-fullheight" style="background-image: url('/Home_Assests/images/bg_1.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+            <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Hotel</span></p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">My Payment</h1>
+            </div>
+        </div>
+    </div>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" style=" margin:20px">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Cardnumber)
+                Date from
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Amount)
+                Date to
+            </th>
+
+            <th>
+                Hall
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Paydate)
+                Price
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                Status
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cardnumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Paydate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Userid)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Payid">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Payid">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Payid">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+        @foreach (var item in Model)
+        {
+            @if (item.Status == "Paied")
+            {
+                if (ViewBag.Userid == item.Userid)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Startdate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Enddate)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hall.Hallname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hall.Price)
+                        </td>
+
+                        <td>
+                            paied
+
+                        </td>
+                        
+
+                    </tr>
+                    }
+                }
+            }
+
+        </tbody>
 </table>

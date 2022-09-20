@@ -31,6 +31,8 @@
 
             <th>
                 Hall
+            </th><th>
+                Price
             </th>
             <th>
                 Status
@@ -53,6 +55,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Hall.Hallname)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hall.Price)
+            </td>
             @if (item.Status == "Paied")
             {
                 <td>
@@ -67,7 +72,7 @@
 
                 </td>
             }
-            else if (item.Status == "Unpaied")
+            else if (item.Status == "Accept")
             {
                 <td>
                     Unpaied
