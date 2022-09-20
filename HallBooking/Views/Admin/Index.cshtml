@@ -1,4 +1,4 @@
-﻿@model Tuple<IEnumerable<Useraccount>,IEnumerable<Hallcategory>, IEnumerable<Hall>>
+﻿@model Tuple<IEnumerable<Useraccount>, IEnumerable<Hallcategory>, IEnumerable<Hall>>
 @{
     Layout = "~/Views/Shared/Admin.cshtml";
 }
@@ -13,6 +13,7 @@
     </ul>
 </div>
 <hr />
+<li><a href="/Useraccounts/EditAdmin/@ViewBag.Userid" class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
 
 
 <div class="main-body">
@@ -92,11 +93,11 @@
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <tbody>
-                                      
+
                                     @foreach (var item in Model.Item1)
                                     {
                                         <tr class="unread">
-                                            
+
                                             <td>
                                                 <img src=@Url.Content("~/Image/" + item.Image) class="rounded-circle" style="width:70px; height:70px; object-fit:contain" />
                                             </td>
@@ -256,22 +257,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                           @foreach (var item in Model.Item3)
+                            @foreach (var item in Model.Item3)
                             {
-                            <tr>
+                                <tr>
 
-                                <td>
-                                    <img src=@Url.Content("~/Image/" + item.Imagepath) style="width:70px; height:50px; object-fit:contain" />
-                                </td>
-                                                                <td>
-                                            @Html.DisplayFor(modelItem => item.Hallname)
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(modelItem => item. Price)
+                                    <td>
+                                        <img src=@Url.Content("~/Image/" + item.Imagepath) style="width:70px; height:50px; object-fit:contain" />
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Hallname)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
 
-                                        </td>
+                                    </td>
 
-                            </tr>}
+                                </tr>
+}
                         </tbody>
                     </table>
                 </div>
