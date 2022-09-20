@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HallBooking.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace HallBooking.Controllers
 {
@@ -52,7 +53,7 @@ namespace HallBooking.Controllers
         // GET: Testimonials/Create
         public IActionResult Create()
         {
-            ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid");
+            //ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid");
             return View();
         }
        
@@ -66,11 +67,16 @@ namespace HallBooking.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+                int u = ViewBag.Userid;
+                testimonial.Userid = u;
+                testimonial.Status = false;
+
                 _context.Add(testimonial);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid", testimonial.Userid);
+           // ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid", testimonial.Userid);
             return View(testimonial);
         }
 
@@ -88,7 +94,7 @@ namespace HallBooking.Controllers
                 return NotFound();
             }
             ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid", testimonial.Userid);
-            return View(testimonial);
+            return View();
         }
 
         // POST: Testimonials/Edit/5

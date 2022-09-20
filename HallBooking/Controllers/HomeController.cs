@@ -28,10 +28,10 @@ namespace HallBooking.Controllers
 
             ViewBag.numberofcustomer = _context.Testimonials.Count();
             ViewBag.numberofHalls = _context.Halls.Count();
-            var category = _context.Hallcategories.ToList();
+            var category = _context.Hallcategories.ToList().Take(3);
             var Homepage = _context.Mainpages.ToList();
             var about = _context.Aboutus.ToList();
-            var halls = _context.Halls.ToList();
+            var halls = _context.Halls.ToList().Take(4);
             var home = Tuple.Create<IEnumerable<Hallcategory>, IEnumerable<Mainpage>,IEnumerable<Aboutu>,IEnumerable<Hall>>(category, Homepage, about, halls);
             return View(home);
 

@@ -35,8 +35,8 @@ namespace HallBooking.Controllers
 
             ViewBag.numberofcategories = _context.Hallcategories.Count();
 
-            var user = _context.Useraccounts.ToList();
-            var category = _context.Hallcategories.ToList();
+            var user = _context.Useraccounts.ToList().Take(5);
+            var category = _context.Hallcategories.ToList().Take(3);
             var hall = _context.Halls.ToList();
 
             var modle = Tuple.Create<IEnumerable<Useraccount>, IEnumerable<Hallcategory>, IEnumerable<Hall>>(user, category,hall);
