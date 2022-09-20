@@ -31,6 +31,8 @@
 
             <th>
                 Hall
+            </th><th>
+                Price
             </th>
             <th>
                 Status
@@ -52,6 +54,9 @@
 
             <td>
                 @Html.DisplayFor(modelItem => item.Hall.Hallname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hall.Price)
             </td>
             @if (item.Status == "Paied")
             {

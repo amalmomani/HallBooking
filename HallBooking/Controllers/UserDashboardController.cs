@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,15 +64,18 @@ namespace HallBooking.Controllers
         }
         public IActionResult Payment()
         {
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
             ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
-
+            ViewBag.Email = HttpContext.Session.GetString("Email");
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Payment(decimal Cardnumber, decimal cvv)
         {
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
             ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email"); 
             ViewBag.flag = 1;
             ViewBag.emptyorder = 1;
             ViewBag.amount = 1;
@@ -108,6 +112,7 @@ namespace HallBooking.Controllers
                         bank.Amount = bank.Amount - amountt;
                         _context.Update(bank);
                         await _context.SaveChangesAsync();
+                        SendEmail(ViewBag.Email, amountt);
                     }
                     else
                         ViewBag.amount = 0;
@@ -126,6 +131,33 @@ namespace HallBooking.Controllers
             }
             return View();
         }
+        public IActionResult SendEmail(string to, decimal? amount)
+        {
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+            to = ViewBag.Email;
+            MimeMessage obj = new MimeMessage();
+            MailboxAddress emailfrom = new MailboxAddress("Hall Booking", "shophope17@gmail.com");
+            MailboxAddress emailto = new MailboxAddress(ViewBag.Fullname, to);
+            obj.From.Add(emailfrom);
+            obj.To.Add(emailto);
+            obj.Subject = "Success Checkout! " + ViewBag.Fullname;
+            BodyBuilder msgbody = new BodyBuilder();
+            // bb.TextBody = body;
+            msgbody.HtmlBody = "<html>" + "<h1>" + " Greetings from Hall Booking! " + ViewBag.Fullname + "</h1>" + "</br>" + " Your bill has been paid successfully with " + "</br>" + " Total : " + amount + "$" + "</br>" + "</html>";
+            obj.Body = msgbody.ToMessageBody();
+            MailKit.Net.Smtp.SmtpClient emailclient = new MailKit.Net.Smtp.SmtpClient();
+            emailclient.Connect("smtp.gmail.com", 465, true);
+            emailclient.Authenticate("shophope17@gmail.com", "icntjjvnvveooroy");
+            emailclient.Send(obj);
+            emailclient.Disconnect(true);
+            emailclient.Dispose();
+
+
+            return View();
+        }
+
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
