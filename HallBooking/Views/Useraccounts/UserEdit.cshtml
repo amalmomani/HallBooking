@@ -3,17 +3,19 @@
 @{ ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/User.cshtml";
 
-                }
-<div class="col-md-12">
-    <div class="page-header-title">
-        <h5 class="m-b-10">Personal information</h5>
+}
+
+<div class="hero-wrap js-fullheight" style="background-image: url('/Home_Assests/images/bg_1.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+            <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/Useraccounts/UserEdit/@ViewBag.Userid">Home</a></span> <span>Hotel</span></p>
+                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Edit Profile</h1>
+            </div>
+        </div>
     </div>
-    <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/Category1/Category"><i class="feather icon-home"></i></a></li>
-        <li class="breadcrumb-item"><a href="javascript:"> Edit Profile </a></li>
-    </ul>
 </div>
-<hr />
 
 <div class="col-md-9 personal-info">
     <form asp-action="UserEdit" enctype="multipart/form-data" class="form-horizontal">

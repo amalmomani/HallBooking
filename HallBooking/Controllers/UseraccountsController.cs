@@ -302,7 +302,7 @@ namespace HallBooking.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Category", "Category1");
+                return RedirectToAction("Category", "UserDashboard");
             }
             ViewData["Roleid"] = new SelectList(_context.Roles, "Roleid", "Roleid", useraccount.Roleid);
             return View(useraccount);
