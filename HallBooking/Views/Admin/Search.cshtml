@@ -3,11 +3,20 @@
     Layout = "~/Views/Shared/Admin.cshtml";
 }
 
-<form action="/" method="post">
-    <input name=" startDate" class="form-control" type="date"/>
-    <input  name=" EndDate" class="form-control" type="date"/>
-    <button type ="submit">Search</button>
-
+<form asp-action="Search" method="post">
+    <div class="row" style="Justify-content: space-between; display:flex">
+        <div class="form-group col-4">
+            <label class="form-label" for="startDate"> Start Date</label>
+            <input type="date" name="startDate" class="form-control search-box" placeholder="Search..." />
+        </div>
+        <div class="form-group col-4" style="">
+            <label class="form-label" for="endDate">End Date</label>
+            <input type="date" name="endDate" class="form-control search-box" placeholder="Search..." />
+        </div>
+        <div class="form-group col-4" style="margin-top:30px">
+            <button type="submit" class="btn btn-danger">Search</button>
+        </div>
+    </div>
 </form>
 
 <table class="table" style=" margin:20px">
@@ -36,47 +45,47 @@
     <tbody>
         @foreach (var item in Model)
         {
-           
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Fullname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hall.Hallname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Startdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Enddate)
-            </td>
 
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Hall.Price)
-            </td>
-            @if (item.Status == "Paied")
-            {
+            <tr>
                 <td>
-                    paied
-
+                    @Html.DisplayFor(modelItem => item.User.Fullname)
                 </td>
-            }
-            else if (item.Status == "Under Process")
-            {
                 <td>
-                    Under Process
-
+                    @Html.DisplayFor(modelItem => item.Hall.Hallname)
                 </td>
-            }
-            else if (item.Status == "Accept")
-            {
                 <td>
-                    Unpaied
-
+                    @Html.DisplayFor(modelItem => item.Startdate)
                 </td>
-            }
-        </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Enddate)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hall.Price)
+                </td>
+                @if (item.Status == "Paied")
+                {
+                    <td>
+                        paied
+
+                    </td>
+                }
+                else if (item.Status == "Under Process")
+                {
+                    <td>
+                        Under Process
+
+                    </td>
+                }
+                else if (item.Status == "Accept")
+                {
+                    <td>
+                        Unpaied
+
+                    </td>
+                }
+            </tr>
         }
 
     </tbody>

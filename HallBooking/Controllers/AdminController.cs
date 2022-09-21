@@ -59,10 +59,34 @@ namespace HallBooking.Controllers
             return View(await modelContext.ToListAsync());
         }
         [HttpPost]
-        public IActionResult Search(DateTime? startDate , DateTime? EndDate,bool? Status)
+        public IActionResult Search(DateTime? startDate , DateTime? endDate)
         {
+            var modelContext = _context.Books.Where(x=>x.Status == "Accept" || x.Status == "Paied").Include(p => p.Hall).Include(p => p.User);
 
-            return View();
+            if (startDate == null && endDate == null)
+            {
+                var model = _context.Books.Where(x => x.Status == "Accept" || x.Status == "Paied").Include(p => p.Hall).Include(p => p.User);
+                return View(model.ToList());
+            }
+            else if (startDate != null && endDate == null)
+            {
+                var result1 = modelContext.Where(x => x.Startdate.Value.Date >= startDate && (x.Status=="Accept"||x.Status=="Paied")).Include(p => p.Hall).Include(p => p.User);
+              
+                return View(result1);
+            }
+            else if (startDate == null && endDate != null)
+            {
+                var result = modelContext.Where(x => x.Enddate.Value.Date <= endDate &&(x.Status == "Accept" || x.Status == "Paied")).Include(p => p.Hall).Include(p => p.User);
+              
+                return View(result.ToList());
+            }
+            else
+            {
+                var result = modelContext.Where(x => x.Startdate.Value.Date <= endDate && x.Enddate.Value.Date >= startDate &&(x.Status == "Accept" || x.Status == "Paied")).Include(p => p.Hall).Include(p => p.User);
+               
+                return View(result.ToList());
+            }
+
         }
 
     }
