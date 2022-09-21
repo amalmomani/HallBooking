@@ -2,3 +2,84 @@
 @{
     Layout = "~/Views/Shared/Admin.cshtml";
 }
+
+<form action="/" method="post">
+    <input name=" startDate" class="form-control" type="date"/>
+    <input  name=" EndDate" class="form-control" type="date"/>
+    <button type ="submit">Search</button>
+
+</form>
+
+<table class="table" style=" margin:20px">
+    <thead>
+        <tr>
+            <th>
+                name
+            </th>
+            <th>
+                Hall
+            </th>
+            <th>
+                Date from
+            </th>
+            <th>
+                Date to
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Status
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (ViewBag.Userid == item.Userid)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hall.Hallname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Startdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Enddate)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Hall.Price)
+            </td>
+            @if (item.Status == "Paied")
+            {
+                <td>
+                    paied
+
+                </td>
+            }
+            else if (item.Status == "Under Process")
+            {
+                <td>
+                    Under Process
+
+                </td>
+            }
+            else if (item.Status == "Accept")
+            {
+                <td>
+                    Unpaied
+
+                </td>
+            }
+        </tr>
+            }
+        }
+
+    </tbody>
+</table>

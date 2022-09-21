@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,5 +50,20 @@ namespace HallBooking.Controllers
 
             return View(modle);
         }
+
+
+
+        public async Task<IActionResult> Search()
+        {
+            var modelContext = _context.Books.Include(b => b.Hall).Include(b => b.User);
+            return View(await modelContext.ToListAsync());
+        }
+        [HttpPost]
+        public IActionResult Search(DateTime? startDate , DateTime? EndDate,bool? Status)
+        {
+
+            return View();
+        }
+
     }
 }
