@@ -36,8 +36,7 @@
     <tbody>
         @foreach (var item in Model)
         {
-            if (ViewBag.Userid == item.Userid)
-            {
+           
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.User.Fullname)
@@ -78,7 +77,6 @@
                 </td>
             }
         </tr>
-            }
         }
 
     </tbody>
