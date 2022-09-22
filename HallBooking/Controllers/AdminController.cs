@@ -53,6 +53,23 @@ namespace HallBooking.Controllers
 
 
 
+        public IActionResult Reports()
+        {
+            var user = _context.Useraccounts.ToList();
+            var book = _context.Books.ToList();
+            var hall = _context.Halls.ToList();
+            var Hallcategory = _context.Hallcategories.ToList();
+
+            var result = from u in user
+                         join b in book on u.Userid equals b.Userid
+                         join h in hall on b.Userid equals h.Hallid
+                         join hc in Hallcategory on h.Hallid equals hc.Categoryid
+                         select new JoinTable { user = u, booking = b, halls = h, category = hc };
+
+
+            return View(result);
+        }
+
         public IActionResult Search()
         {
             var modelContext = _context.Books.Where(x => x.Status == "Accept" || x.Status == "Paied").Include(p => p.Hall).Include(p => p.User);
