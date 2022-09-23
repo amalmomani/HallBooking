@@ -73,6 +73,7 @@ namespace HallBooking.Controllers
         public IActionResult Search()
         {
             var modelContext = _context.Books.Where(x => x.Status == "Accept" || x.Status == "Paied").Include(p => p.Hall).Include(p => p.User);
+
             return View(modelContext.ToList());
         }
         [HttpPost]

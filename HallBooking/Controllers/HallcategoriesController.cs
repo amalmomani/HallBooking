@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using HallBooking.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace HallBooking.Controllers
 {
@@ -25,9 +26,14 @@ namespace HallBooking.Controllers
         // GET: Hallcategories
         public async Task<IActionResult> Index()
         {
+
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
             return View(await _context.Hallcategories.ToListAsync());
         }
-
+       
+        
         // GET: Hallcategories/Details/5
         public async Task<IActionResult> Details(decimal? id)
         {
@@ -80,6 +86,11 @@ namespace HallBooking.Controllers
             }
             return View(hallcategory);
         }
+
+
+
+
+       
 
         // GET: Hallcategories/Edit/5
         public async Task<IActionResult> Edit(decimal? id)
