@@ -6,6 +6,8 @@ using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace HallBooking.Controllers
@@ -206,24 +208,39 @@ namespace HallBooking.Controllers
             ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
             ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
             ViewBag.Email = HttpContext.Session.GetString("Email");
-            to = ViewBag.Email;
-            MimeMessage obj = new MimeMessage();
-            MailboxAddress emailfrom = new MailboxAddress("Hall Booking", "shophope17@gmail.com");
-            MailboxAddress emailto = new MailboxAddress(ViewBag.Fullname, to);
-            obj.From.Add(emailfrom);
-            obj.To.Add(emailto);
-            obj.Subject = "Success Checkout! " + ViewBag.Fullname;
-            BodyBuilder msgbody = new BodyBuilder();
-            // bb.TextBody = body;
-            msgbody.HtmlBody = "<html>" + "<h1>" + " Greetings from Hall Booking! " + ViewBag.Fullname + "</h1>" + "</br>" + " Your bill has been paid successfully with " + "</br>" + " Total : " + amount + "$" + "</br>" + "</html>";
-            obj.Body = msgbody.ToMessageBody();
-            MailKit.Net.Smtp.SmtpClient emailclient = new MailKit.Net.Smtp.SmtpClient();
-            emailclient.Connect("smtp.gmail.com", 465, true);
-            emailclient.Authenticate("shophope17@gmail.com", "icntjjvnvveooroy");
-            emailclient.Send(obj);
-            emailclient.Disconnect(true);
-            emailclient.Dispose();
+            //to = ViewBag.Email;
+            //MimeMessage obj = new MimeMessage();
+            //MailboxAddress emailfrom = new MailboxAddress("Hall Booking", "shophope17@gmail.com");
+            //MailboxAddress emailto = new MailboxAddress(ViewBag.Fullname, to);
+            //obj.From.Add(emailfrom);
+            //obj.To.Add(emailto);
+            //obj.Subject = "Success Checkout! " + ViewBag.Fullname;
+            //BodyBuilder msgbody = new BodyBuilder();
+            //// bb.TextBody = body;
+            //msgbody.HtmlBody = "<html>" + "<h1>" + " Greetings from Hall Booking! " + ViewBag.Fullname + "</h1>" + "</br>" + " Your bill has been paid successfully with " + "</br>" + " Total : " + amount + "$" + "</br>" + "</html>";
+            //obj.Body = msgbody.ToMessageBody();
+            //MailKit.Net.Smtp.SmtpClient emailclient = new MailKit.Net.Smtp.SmtpClient();
+            //emailclient.Connect("smtp.gmail.com", 465, true);
+            //emailclient.Authenticate("shophope17@gmail.com", "txcfhvzgekoszkbi");
+            //emailclient.Send(obj);
+            //emailclient.Disconnect(true);
+            //emailclient.Dispose();
 
+
+            string e = ViewBag.Email;
+            using System.Net.Mail.SmtpClient mySmtpClient = new System.Net.Mail.SmtpClient("smtp.outlook.com", 587);
+            mySmtpClient.EnableSsl = true;
+
+            mySmtpClient.UseDefaultCredentials = false;
+            NetworkCredential basicAuthenticationInfo = new
+           NetworkCredential("hopeshop99@outlook.com", "hopeshop78");
+
+            mySmtpClient.Credentials = basicAuthenticationInfo;
+            MailMessage message = new MailMessage("Hall Book", e);
+            string body = " Greetings from Hall Book! " + ViewBag.Fullname + " Your bill has been paid successfully with" + " Total amount of " + amount + "$";
+            message.Subject = "Success Checkout";
+            message.Body = body;
+            mySmtpClient.Send(message);
 
             return View();
         }

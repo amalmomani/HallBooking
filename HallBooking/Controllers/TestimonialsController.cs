@@ -74,10 +74,10 @@ namespace HallBooking.Controllers
 
                 _context.Add(testimonial);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Create));
             }
            // ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid", testimonial.Userid);
-            return View(testimonial);
+            return View();
         }
 
         // GET: Testimonials/Edit/5
