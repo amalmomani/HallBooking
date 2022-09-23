@@ -26,6 +26,12 @@ namespace HallBooking.Controllers
             var modelContext = _context.Books.Include(b => b.Hall).Include(b => b.User);
             return View(await modelContext.ToListAsync());
         }
+        public async Task<IActionResult> AcceptBook()
+        {
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            var modelContext = _context.Books.Include(b => b.Hall).Include(b => b.User);
+            return View(await modelContext.ToListAsync());
+        }
         public async Task<IActionResult> Payment()
         {
             ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
@@ -159,11 +165,11 @@ namespace HallBooking.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(AcceptBook));
             }
             ViewData["Hallid"] = new SelectList(_context.Halls, "Hallid", "Hallid", book.Hallid);
             ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid", book.Userid);
-            return View(book);
+            return RedirectToAction(nameof(AcceptBook));
         }
 
         // GET: Books/Delete/5

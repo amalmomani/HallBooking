@@ -45,7 +45,7 @@ namespace HallBooking.Controllers
                 var result = cat.Where(x => x.Name.ToUpper().Contains(category.ToUpper()));
                 return View(result);
             }
-            return View();
+            return View(cat);
         }
         public async Task<IActionResult> Halls()
         {
