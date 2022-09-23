@@ -63,9 +63,9 @@ namespace HallBooking.Controllers
             {
                 _context.Add(contactu);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Create));
             }
-            return View(contactu);
+            return View();
         }
 
         // GET: Contactus/Edit/5

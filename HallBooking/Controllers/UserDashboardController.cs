@@ -24,6 +24,28 @@ namespace HallBooking.Controllers
             var holls = _context.Halls.Where(x => x.Categoryid == id);
             return View(holls);
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Index(string? Index)
+        {
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+            var cat = await _context.Halls.ToListAsync();
+            if (Index != null)
+            {
+                var result = cat.Where(x => x.Hallname.ToUpper().Contains(Index.ToUpper()));
+                return View(result);
+            }
+            return View(cat);
+        }
+
+
+
+
+
+
         public async Task<IActionResult> Category()
         {
 
@@ -47,11 +69,45 @@ namespace HallBooking.Controllers
             }
             return View(cat);
         }
+
+
+       
+       
+
+
+
+
         public async Task<IActionResult> Halls()
         {
+
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
             var modelContext = _context.Halls.Include(h => h.Category);
             return View(await modelContext.ToListAsync());
         }
+
+       [HttpPost]
+        public async Task<IActionResult> Halls(string? halls)
+        {
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+            var cat = await _context.Halls.ToListAsync();
+            if (halls != null)
+            {
+                var result = cat.Where(x => x.Hallname.ToUpper().Contains(halls.ToUpper()));
+                return View(result);
+            }
+            return View(cat);
+        }
+
+
+
+
+
+
+
         public IActionResult Add(int id)
         {
             ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
