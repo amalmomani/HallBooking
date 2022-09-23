@@ -18,28 +18,46 @@
     </div>
 </div>
 
+
+
+
+
+
+
 <section class="ftco-section">
     <div class="container">
         <div class="row">
-
-
-
-            <div class="col-lg-12">
+           
+            <div class="col-lg-3 sidebar order-md-last ftco-animate">
+                <div class="sidebar-wrap ftco-animate">
+                    <h3 class="heading mb-4">Find Category</h3>
+                    <form asp-action="Category" method="post">
+                        <div class="fields">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search in categories...">
+                            </div>
+                           
+                            <div class="form-group">
+                                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+               
+            </div><!-- END-->
+            <div class="col-lg-9">
+               
                 <div class="row">
                     @foreach (var item in Model)
                     {
                         <div class="col-sm col-md-6 col-lg-4 ftco-animate">
-
-
                             <div class="destination">
-
-                                <img src=@Url.Content("~/Images/"+item.Imagepath) style="border-radius:20%;" width="100" height="100" />
-
-                                @*<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: @Url.Content("~/images/" + item.Imagepath);">*@
-                                    <div class="icon d-flex justify-content-center align-items-center">
-                                        <span class="icon-link"></span>
-                                    </div>
-                                @*</a>*@
+                                <img src=@Url.Content("~/Images/" + item.Imagepath) style="border-radius:20%;" width="100" height="100" />
+                                @*<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/destination-3.jpg);">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                            <span class="icon-link"></span>
+                        </div>
+                    </a>*@
                                 <div class="text p-3">
                                     <div class="d-flex">
                                         <div class="one">
@@ -54,26 +72,64 @@
                                             </p>
                                         </div>
                                         @*<div class="two">
-                    <span class="price per-price">$@item.Price<br><small>/night</small></span>
-                </div>*@
+                                <span class="price">$200</span>
+                            </div>*@
                                     </div>
                                     <p>Far far away, behind the word mountains, far from the countries</p>
+                                    <p class="days"><span>2 days 3 nights</span></p>
                                     <hr>
                                     <p class="bottom-area d-flex">
-                                        <span><i class="icon-map-o"></i> Miami, Fl</span>
-                                        <span class="ml-auto"><a href="/UserDashboard/Index/@item.Categoryid">Halls </a></span>
+                                        <span><i class="icon-map-o"></i> San Franciso, CA</span>
+                                        <span class="ml-auto"><a href="/UserDashboard/Index/@item.Categoryid">Halls</a></span>
                                     </p>
                                 </div>
                             </div>
-
                         </div>
                     }
                     </div>
+                
 
-
-
-            
             </div> <!-- .col-md-8 -->
         </div>
     </div>
 </section> <!-- .section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

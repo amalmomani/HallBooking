@@ -33,6 +33,20 @@ namespace HallBooking.Controllers
 
             return View(await _context.Hallcategories.ToListAsync());
         }
+        [HttpPost]
+        public async Task<IActionResult> Category(string? category)
+        {
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+            var cat = await _context.Hallcategories.ToListAsync();
+            if (category != null)
+            {
+                var result = cat.Where(x => x.Name.ToUpper().Contains(category.ToUpper()));
+                return View(result);
+            }
+            return View();
+        }
         public async Task<IActionResult> Halls()
         {
             var modelContext = _context.Halls.Include(h => h.Category);
