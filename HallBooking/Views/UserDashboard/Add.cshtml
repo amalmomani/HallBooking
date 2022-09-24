@@ -2,68 +2,181 @@
 
 @{
     ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/User.cshtml";
+    Layout = null;
 }
 
-<div class="hero-wrap js-fullheight" style="background-image: url('/Home_Assests/images/bg_1.jpg');">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-            <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/Useraccounts/UserEdit/@ViewBag.Userid">Edit Profile</a></span> <span></span></p>
-                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Category</h1>
+@*<div class="hero-wrap js-fullheight" style="background-image: url('/Home_Assests/images/bg_1.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+                <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="/Useraccounts/UserEdit/@ViewBag.Userid">Edit Profile</a></span> <span></span></p>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Category</h1>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<div class="row">
-    <div class="col-lg-4 sidebar order-md-last ftco-animate">
-    </div>
-    <div class="col-lg-4 sidebar order-md-last ftco-animate">
-        <div class="sidebar-wrap ftco-animate">
-            <form asp-action="Add">
-                <div class="fields">
-                    <div class="form-group">
-                        <label asp-for="Startdate" class="control-label">From Date</label>
-                        <input asp-for="Startdate" class="form-control" />
-                        <span asp-validation-for="Startdate" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Enddate" class="control-label">To Date</label>
-                        <input asp-for="Enddate" class="form-control" />
-                        <span asp-validation-for="Enddate" class="text-danger"></span>
-                    </div>
-
-
-                    <div class="form-group">
-                        <input type="submit" value="Check availability" class="btn btn-primary" />
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="select-wrap one-third">
-                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                            <select name="" id="" class="form-control" placeholder="Keyword search">
-                                <option value="">Select Location</option>
-                                <option value="">San Francisco USA</option>
-                                <option value="">Berlin Germany</option>
-                                <option value="">Lodon United Kingdom</option>
-                                <option value="">Paris Italy</option>
-                            </select>
-                        </div>
-                    </div>
-
-                </div>
-            </form>
+    <div class="row">
+        <div class="col-lg-4 sidebar order-md-last ftco-animate">
         </div>
-    </div> END
+        <div class="col-lg-4 sidebar order-md-last ftco-animate">
+            <div class="sidebar-wrap ftco-animate">
+                <form asp-action="Add">
+                    <div class="fields">
+                        <div class="form-group">
+                            <label asp-for="Startdate" class="control-label">From Date</label>
+                            <input asp-for="Startdate" class="form-control" />
+                            <span asp-validation-for="Startdate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Enddate" class="control-label">To Date</label>
+                            <input asp-for="Enddate" class="form-control" />
+                            <span asp-validation-for="Enddate" class="text-danger"></span>
+                        </div>
 
-</div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Check availability" class="btn btn-primary" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="select-wrap one-third">
+                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                <select name="" id="" class="form-control" placeholder="Keyword search">
+                                    <option value="">Select Location</option>
+                                    <option value="">San Francisco USA</option>
+                                    <option value="">Berlin Germany</option>
+                                    <option value="">Lodon United Kingdom</option>
+                                    <option value="">Paris Italy</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div> END
+
+    </div>*@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Booking Form HTML Template</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Cardo:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/Booking/css/bootstrap.min.css" />
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/Booking/css/style.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
 
 
+    <title>Hall Booking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Home_Assests/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/animate.css">
+
+    <link rel="stylesheet" href="~/Home_Assests/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="~/Home_Assests/css/aos.css">
+
+    <link rel="stylesheet" href="~/Home_Assests/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="~/Home_Assests/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="~/Home_Assests/css/flaticon.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/icomoon.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/style.css">
+</head>
+
+<body>
+
+    
+
+
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="booking-form">
+                        <div class="form-header">
+                            <h1>Make your reservation</h1>
+                        </div>
+                        <form asp-action="Add">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Startdate" class="control-label">From Date</label>
+                                        <input asp-for="Startdate" class="form-control" />
+                                        <span asp-validation-for="Startdate" class="text-danger"></span>
+                                    </div>
+                                    <span class="in-out hidden-xs hidden-sm">&#8652;</span>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label asp-for="Enddate" class="control-label">To Date</label>
+                                        <input asp-for="Enddate" class="form-control" />
+                                        <span asp-validation-for="Enddate" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <span class="form-label">  Size </span>
+                                        <input type="text" class="form-control" />
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-5">
+                                    <div class="form-btn">
+                                        <button class="submit-btn">Check availability</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
 
 
 
