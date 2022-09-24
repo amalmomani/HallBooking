@@ -236,7 +236,9 @@ namespace HallBooking.Controllers
            NetworkCredential("hopeshop99@outlook.com", "hopeshop78");
 
             mySmtpClient.Credentials = basicAuthenticationInfo;
-            MailMessage message = new MailMessage("Hall Book", e);
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress("hopeshop99@outlook.com");
+            message.To.Add(new MailAddress(to.ToString()));
             string body = " Greetings from Hall Book! " + ViewBag.Fullname + " Your bill has been paid successfully with" + " Total amount of " + amount + "$";
             message.Subject = "Success Checkout";
             message.Body = body;
