@@ -3,13 +3,11 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/User.cshtml";
+    Layout = null;
 }
 
-<link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
 
-<div class="hero-wrap js-fullheight" style="background-image: url('/Home_Assests/images/bg_1.jpg');">
+@*<div class="hero-wrap js-fullheight" style="background-image: url('/Home_Assests/images/bg_1.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
@@ -19,9 +17,9 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
-<table class="table" style=" margin:20px"id="example">
+@*<table class="table" style=" margin:20px" id="example">
     <thead>
         <tr>
             <th>
@@ -50,35 +48,204 @@
             {
                 if (ViewBag.Userid == item.Userid)
                 {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hall.Hallname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Startdate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Enddate)
-            </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hall.Hallname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Startdate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Enddate)
+                        </td>
 
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Hall.Price)
-            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hall.Price)
+                        </td>
 
-            <td>
-                paied
+                        <td>
+                            paied
 
-            </td>
+                        </td>
 
 
-        </tr>
+                    </tr>
                 }
             }
         }
 
     </tbody>
-</table>
+</table>*@
+
+
+
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Booking Form HTML Template</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Cardo:700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/Book/css/bootstrap.min.css" />
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/Book/css/style.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    <title>Hall Booking</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/Home_Assests/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/animate.css">
+
+    <link rel="stylesheet" href="~/Home_Assests/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/magnific-popup.css">
+
+    <link rel="stylesheet" href="~/Home_Assests/css/aos.css">
+
+    <link rel="stylesheet" href="~/Home_Assests/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="~/Home_Assests/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/jquery.timepicker.css">
+
+
+    <link rel="stylesheet" href="~/Home_Assests/css/flaticon.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/icomoon.css">
+    <link rel="stylesheet" href="~/Home_Assests/css/style.css">
+
+    
+
+
+
+    <body>
+
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">Hall Booking</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="oi oi-menu"></span> Menu
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="ftco-nav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active"><a href="/UserDashboard/Category" class="nav-link">Home</a></li>
+                            <li class="nav-item "><a href="/UserDashboard/Halls" class="nav-link">Halls</a></li>
+                            <li class="nav-item "><a href="/Books/Index" class="nav-link">My Book</a></li>
+                            <li class="nav-item "><a href="/Books/Payment" class="nav-link">My Payment</a></li>
+                            <li class="nav-item "><a href="/Testimonials/Create" class="nav-link">Make Testimonial</a></li>
+                            <li class="nav-item "><a asp-controller="UserDashboard" asp-action="Logout" class="nav-link">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+        <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+        <link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
+
+
+        <div id="booking" class="section">
+            <div class="section-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="booking-form">
+                            <div class="form-header">
+                                <h1> My Payment</h1>
+
+                            </div>
+
+                            <table class="table" style=" margin:20px">
+                                <thead class="thead-primary">
+                                    <tr>
+                                        <th>
+                                            Hall
+                                        </th>
+                                        <th>
+                                            Date from
+                                        </th>
+                                        <th>
+                                            Date to
+                                        </th>
+
+
+                                        <th>
+                                            Price
+                                        </th>
+                                        <th>
+                                            Status
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        @if (item.Status == "Paied")
+                                        {
+                                            if (ViewBag.Userid == item.Userid)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Hall.Hallname)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Startdate)
+                                                    </td>
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Enddate)
+                                                    </td>
+
+
+                                                    <td>
+                                                        @Html.DisplayFor(modelItem => item.Hall.Price)
+                                                    </td>
+
+                                                    <td>
+                                                        paied
+
+                                                    </td>
+
+
+                                                </tr>
+                                            }
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
