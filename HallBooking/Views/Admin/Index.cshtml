@@ -1,4 +1,4 @@
-﻿@model Tuple<IEnumerable<Useraccount>, IEnumerable<Hallcategory>, IEnumerable<Hall>>
+﻿@model Tuple<IEnumerable<Useraccount>, IEnumerable<Hallcategory>, IEnumerable<Hall>, IEnumerable<Book>>
 @{
     Layout = "~/Views/Shared/Admin.cshtml";
 }
@@ -24,18 +24,18 @@
             <div class="col-md-6 col-xl-4">
                 <div class="card daily-sales">
                     <div class="card-block">
-                        <h6 class="mb-4">Total number of  Book</h6>
+                        <h6 class="mb-4">Total number of Halls is Booking</h6>
                         <div class="row d-flex align-items-center">
                             <div class="col-9">
-                                <h3 class="f-w-300 d-flex align-items-center m-b-0"><i class="feather icon-arrow-up text-c-green f-30 m-r-10"></i>@ViewBag.numberofBook</h3>
+                                <h3 class="f-w-300 d-flex align-items-center m-b-0"><i class="feather icon-arrow-up text-c-green f-30 m-r-10"></i>@ViewBag.numberofHalls_isBooking</h3>
                             </div>
 
                             <div class="col-3 text-right">
-                                <p class="m-b-0">@ViewBag.numberofBook</p>
+                                <p class="m-b-0">@ViewBag.numberofHalls_isBooking%</p>
                             </div>
                         </div>
                         <div class="progress m-t-30" style="height: 7px;">
-                            <div class="progress-bar progress-c-theme" role="progressbar" style="width: @ViewBag.numberofBook%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar progress-c-theme" role="progressbar" style="width: @ViewBag.numberofHalls_isBooking%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>
@@ -45,17 +45,17 @@
             <div class="col-md-6 col-xl-4">
                 <div class="card Monthly-sales">
                     <div class="card-block">
-                        <h6 class="mb-4">Number of Halls</h6>
+                        <h6 class="mb-4">Total number of Halls is Not Booking</h6>
                         <div class="row d-flex align-items-center">
                             <div class="col-9">
-                                <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i class="feather icon-arrow-up text-c-red f-30 m-r-10"></i>@ViewBag.numberofHalls</h3>
+                                <h3 class="f-w-300 d-flex align-items-center  m-b-0"><i class="feather icon-arrow-up text-c-red f-30 m-r-10"></i> @ViewBag.numberofHalls_is_notBooking</h3>
                             </div>
                             <div class="col-3 text-right">
-                                <p class="m-b-0"> @ViewBag.numberofHalls%</p>
+                                <p class="m-b-0"> @ViewBag.numberofHalls_is_notBooking%</p>
                             </div>
                         </div>
                         <div class="progress m-t-30" style="height: 7px;">
-                            <div class="progress-bar progress-c-theme2" role="progressbar" style="width: @ViewBag.numberofHalls%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar progress-c-theme2" role="progressbar" style="width:@ViewBag.numberofHalls_is_notBooking%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                 </div>

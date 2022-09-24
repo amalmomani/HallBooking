@@ -30,8 +30,10 @@ namespace HallBooking.Controllers
 
             ViewBag.numberofcustomer = _context.Useraccounts.Count();
             ViewBag.numberofHalls = _context.Halls.Count();
-            ViewBag.numberofBook = _context.Books.Count();
+            ViewBag.numberofHalls_isBooking = _context.Books.Count(x => x.Status == "Accept");
+            ViewBag.numberofHalls_is_notBooking = _context.Books.Count(x => x.Status == "Under Process");
             ViewBag.number_of_Hallcategories = _context.Hallcategories.Count();
+            
 
 
             ViewBag.numberofcategories = _context.Hallcategories.Count();
@@ -39,8 +41,8 @@ namespace HallBooking.Controllers
             var user = _context.Useraccounts.ToList().Take(5);
             var category = _context.Hallcategories.ToList().Take(3);
             var hall = _context.Halls.ToList();
-
-            var modle = Tuple.Create<IEnumerable<Useraccount>, IEnumerable<Hallcategory>, IEnumerable<Hall>>(user, category,hall);
+            var book = _context.Books.ToList();
+            var modle = Tuple.Create<IEnumerable<Useraccount>, IEnumerable<Hallcategory>, IEnumerable<Hall>, IEnumerable<Book>>(user, category,hall, book);
 
 
 
