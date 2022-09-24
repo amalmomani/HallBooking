@@ -8,78 +8,81 @@
 
 
 @*<div class="hero-wrap js-fullheight" style="background-image: url('/Home_Assests/images/bg_1.jpg');">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-            <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Hotel</span></p>
-                <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">My Payment</h1>
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+                <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+                    <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Hotel</span></p>
+                    <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">My Payment</h1>
+                </div>
             </div>
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 @*<table class="table" style=" margin:20px" id="example">
-    <thead>
-        <tr>
-            <th>
-                Hall
-            </th>
-            <th>
-                Date from
-            </th>
-            <th>
-                Date to
-            </th>
+        <thead>
+            <tr>
+                <th>
+                    Hall
+                </th>
+                <th>
+                    Date from
+                </th>
+                <th>
+                    Date to
+                </th>
 
 
-            <th>
-                Price
-            </th>
-            <th>
-                Status
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            @if (item.Status == "Paied")
+                <th>
+                    Price
+                </th>
+                <th>
+                    Status
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
             {
-                if (ViewBag.Userid == item.Userid)
+                @if (item.Status == "Paied")
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Hall.Hallname)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Startdate)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Enddate)
-                        </td>
+                    if (ViewBag.Userid == item.Userid)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Hall.Hallname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Startdate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Enddate)
+                            </td>
 
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Hall.Price)
-                        </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Hall.Price)
+                            </td>
 
-                        <td>
-                            paied
+                            <td>
+                                paied
 
-                        </td>
+                            </td>
 
 
-                    </tr>
+                        </tr>
+                    }
                 }
             }
-        }
 
-    </tbody>
-</table>*@
-
+        </tbody>
+    </table>*@
 
 
+<head>
+
+    <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
 
 
 
@@ -133,119 +136,116 @@
     <link rel="stylesheet" href="~/Home_Assests/css/icomoon.css">
     <link rel="stylesheet" href="~/Home_Assests/css/style.css">
 
-    
+</head>
 
 
 
-    <body>
+<body>
 
-        <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-                <div class="container">
-                    <a class="navbar-brand" href="index.html">Hall Booking</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="oi oi-menu"></span> Menu
-                    </button>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Hall Booking</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="oi oi-menu"></span> Menu
+                </button>
 
-                    <div class="collapse navbar-collapse" id="ftco-nav">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active"><a href="/UserDashboard/Category" class="nav-link">Home</a></li>
-                            <li class="nav-item "><a href="/UserDashboard/Halls" class="nav-link">Halls</a></li>
-                            <li class="nav-item "><a href="/Books/Index" class="nav-link">My Book</a></li>
-                            <li class="nav-item "><a href="/Books/Payment" class="nav-link">My Payment</a></li>
-                            <li class="nav-item "><a href="/Testimonials/Create" class="nav-link">Make Testimonial</a></li>
-                            <li class="nav-item "><a asp-controller="UserDashboard" asp-action="Logout" class="nav-link">Logout</a></li>
-                        </ul>
-                    </div>
+                <div class="collapse navbar-collapse" id="ftco-nav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active"><a href="/UserDashboard/Category" class="nav-link">Home</a></li>
+                        <li class="nav-item "><a href="/UserDashboard/Halls" class="nav-link">Halls</a></li>
+                        <li class="nav-item "><a href="/Books/Index" class="nav-link">My Book</a></li>
+                        <li class="nav-item "><a href="/Books/Payment" class="nav-link">My Payment</a></li>
+                        <li class="nav-item "><a href="/Testimonials/Create" class="nav-link">Make Testimonial</a></li>
+                        <li class="nav-item "><a asp-controller="UserDashboard" asp-action="Logout" class="nav-link">Logout</a></li>
+                    </ul>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
-        </div>
-        <link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
-        <link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
-
-
-        <div id="booking" class="section">
-            <div class="section-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="booking-form">
-                            <div class="form-header">
-                                <h1> My Payment</h1>
-
-                            </div>
-
-                            <table class="table" style=" margin:20px">
-                                <thead class="thead-primary">
-                                    <tr>
-                                        <th>
-                                            Hall
-                                        </th>
-                                        <th>
-                                            Date from
-                                        </th>
-                                        <th>
-                                            Date to
-                                        </th>
+    </div>
 
 
-                                        <th>
-                                            Price
-                                        </th>
-                                        <th>
-                                            Status
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model)
-                                    {
-                                        @if (item.Status == "Paied")
-                                        {
-                                            if (ViewBag.Userid == item.Userid)
-                                            {
-                                                <tr>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Hall.Hallname)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Startdate)
-                                                    </td>
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Enddate)
-                                                    </td>
-
-
-                                                    <td>
-                                                        @Html.DisplayFor(modelItem => item.Hall.Price)
-                                                    </td>
-
-                                                    <td>
-                                                        paied
-
-                                                    </td>
-
-
-                                                </tr>
-                                            }
-                                        }
-                                    }
-
-                                </tbody>
-                            </table>
-
-
-
-
-
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="booking-form">
+                        <div class="form-header">
+                            <h1> My Payment</h1>
 
                         </div>
+
+                        <table class="table" style=" margin:20px" id="t">
+                            <thead class="thead-primary">
+                                <tr>
+                                    <th>
+                                        Hall
+                                    </th>
+                                    <th>
+                                        Date from
+                                    </th>
+                                    <th>
+                                        Date to
+                                    </th>
+
+
+                                    <th>
+                                        Price
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    @if (item.Status == "Paied")
+                                    {
+                                        if (ViewBag.Userid == item.Userid)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Hall.Hallname)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Startdate)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Enddate)
+                                                </td>
+
+
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Hall.Price)
+                                                </td>
+
+                                                <td>
+                                                    paied
+
+                                                </td>
+
+
+                                            </tr>
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+
+
+
+
+
+
                     </div>
                 </div>
             </div>
         </div>
-    </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-
+    </div>
+</body>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
@@ -258,7 +258,7 @@
 <script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>
 <script>
     $(document).ready(function () {
-        $('#example').DataTable({
+        $('#t').DataTable({
             dom: 'Bfrtip',
             buttons: [
                 'copyHtml5',
