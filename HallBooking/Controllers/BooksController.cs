@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HallBooking.Models;
 using Microsoft.AspNetCore.Http;
+using System.Net;
+using System.Net.Mail;
 
 namespace HallBooking.Controllers
 {
@@ -153,6 +155,7 @@ namespace HallBooking.Controllers
                 {
                     _context.Update(book);
                     await _context.SaveChangesAsync();
+                   
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -165,12 +168,40 @@ namespace HallBooking.Controllers
                         throw;
                     }
                 }
+                var auth = _context.Useraccounts.Where(data => data.Userid == book.Userid).FirstOrDefault();
+                SendEmail(auth.Email);
                 return RedirectToAction(nameof(AcceptBook));
             }
             ViewData["Hallid"] = new SelectList(_context.Halls, "Hallid", "Hallid", book.Hallid);
             ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid", book.Userid);
             return RedirectToAction(nameof(AcceptBook));
         }
+
+        public IActionResult SendEmail(string to)
+        {
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+            string e = ViewBag.Email;
+            using System.Net.Mail.SmtpClient mySmtpClient = new System.Net.Mail.SmtpClient("smtp.outlook.com", 587);
+            mySmtpClient.EnableSsl = true;
+
+            mySmtpClient.UseDefaultCredentials = false;
+            NetworkCredential basicAuthenticationInfo = new
+           NetworkCredential("hopeshop99@outlook.com", "hopeshop78");
+
+            mySmtpClient.Credentials = basicAuthenticationInfo;
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress("hopeshop99@outlook.com");
+            message.To.Add(new MailAddress(to.ToString()));
+            string body = " Greetings from Hall Book! " + " Your book has been accepted! " ;
+            message.Subject = "Success Checkout";
+            message.Body = body;
+            mySmtpClient.Send(message);
+
+            return View();
+        }
+
 
         // GET: Books/Delete/5
         public async Task<IActionResult> Delete(decimal? id)

@@ -7,13 +7,13 @@
         <h5 class="m-b-10">Personal information</h5>
     </div>
     <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/Dashboard/Dashboard"><i class="feather icon-home"></i></a></li>
+        <li class="breadcrumb-item"><a href=""><i class="feather icon-home"></i></a></li>
         <li class="breadcrumb-item"><a href="javascript:"> Edit Profile </a></li>
     </ul>
 </div>
 <hr />
 <div class="col-md-9 personal-info">
-    <form asp-action="UserEdit" enctype="multipart/form-data" class="form-horizontal">
+    <form asp-action="EditAdmin" enctype="multipart/form-data" class="form-horizontal">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="Userid" />
         <img src=@Url.Content("~/Images/" + Model.Image) class="rounded-circle" style="width:200px; height:200px; object-fit:contain" />
@@ -75,7 +75,7 @@
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
                 <input type="submit" value="Save" class="btn btn-primary " />
-                <a href="/Category1/Category" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
+                <a href="" class="btn btn-secondary" data-dismiss="modal">Cancel</a>
             </div>
         </div>
     </form>
