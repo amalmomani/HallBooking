@@ -25,7 +25,8 @@ namespace HallBooking.Controllers
 
         public IActionResult Index()
         {
-
+            ViewBag.numberofHalls_isBooking = _context.Books.Count(x => x.Status == "Accept" );
+            ViewBag.number_of_Hallcategories = _context.Hallcategories.Count();
             ViewBag.numberofcustomer = _context.Testimonials.Count();
             ViewBag.numberofHalls = _context.Halls.Count();
             var category = _context.Hallcategories.ToList().Take(3);
