@@ -23,6 +23,10 @@ namespace HallBooking.Controllers
         }
         public IActionResult Index(int id)
         {
+            ViewBag.Fullname = HttpContext.Session.GetString("Fullname");
+            ViewBag.Userid = HttpContext.Session.GetInt32("Userid");
+            ViewBag.Email = HttpContext.Session.GetString("Email");
+
             var holls = _context.Halls.Where(x => x.Categoryid == id);
             return View(holls);
         }
