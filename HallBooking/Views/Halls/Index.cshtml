@@ -6,6 +6,8 @@
 
 }
 
+
+
 @*<h1>Index</h1>
 
     <p>
@@ -72,20 +74,18 @@
     </table>*@
 
 
-
+<link href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css" rel="stylesheet" />
+<h1>Halls</h1>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a style="padding:5px" class="btn btn-info" asp-action="Create">Create New</a>
 </p>
 
-<div class="row">
-    <div class="col-md-12 col-lg-12 col-sm-12">
-        <div class="white-box">
-            <div class="d-md-flex mb-3">
-                <h3 class="box-title mb-0">Halls</h3>
 
-            </div>
-            <div class="table-responsive">
-                <table class="table no-wrap">
+        
+            
+          
+    <table class="table table-striped table-hover" id="t">
                     <thead>
                         <tr>
                             <th class="border-top-0">Name</th>
@@ -100,26 +100,54 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Hallname)</td>
+                            <tr>
+                                <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Hallname)</td>
 
-                            <td> @Html.DisplayFor(modelItem => item.Hallddress)</td>
-                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Hallsize)</td>
-                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Price)</td>
-                            @*<td class="txt-oflo">@Html.DisplayFor(modelItem => item.Isbooked)</td>*@
-                            <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Category.Name)</td>
-                            <td>
-                                <img src=@Url.Content("~/Images/"+item.Imagepath) style="border-radius:20%;" width="100" height="100" />
+                                <td> @Html.DisplayFor(modelItem => item.Hallddress)</td>
+                                <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Hallsize)</td>
+                                <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Price)</td>
+                                @*<td class="txt-oflo">@Html.DisplayFor(modelItem => item.Isbooked)</td>*@
+                                <td class="txt-oflo">@Html.DisplayFor(modelItem => item.Category.Name)</td>
+                                <td>
+                                    <img src=@Url.Content("~/Images/"+item.Imagepath) style="border-radius:20%;" width="100" height="100" />
 
-                            </td>
+                                </td>
+                                <td>
+                                    <a style="padding:5px" class="btn-info" asp-action="Edit" asp-route-id="@item.Hallid">Edit</a> |
+                                    <a style="padding:5px" class="btn-info" asp-action="Details" asp-route-id="@item.Hallid">Details</a> |
+                                    <a style="padding:5px" class="btn-danger" asp-action="Delete" asp-route-id="@item.Hallid">Delete</a>
+                                </td>
+                            </tr>
 
-                        </tr>
-                       
 
-                    }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+                        }
+        </tbody>
+     </table>
+           
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js" defer></script>
+
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js" defer></script>
+<script>
+    $(document).ready(function () {
+        $('#t').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+
+            ]
+        });
+    });
+</script>
