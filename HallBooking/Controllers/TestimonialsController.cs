@@ -80,7 +80,6 @@ namespace HallBooking.Controllers
             return View();
         }
 
-        // GET: Testimonials/Edit/5
         public async Task<IActionResult> Edit(decimal? id)
         {
             if (id == null)
@@ -94,10 +93,10 @@ namespace HallBooking.Controllers
                 return NotFound();
             }
             ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid", testimonial.Userid);
-            return View();
+            return View(testimonial);
         }
 
-        // POST: Testimonials/Edit/5
+        // POST: Testimonials1/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -132,6 +131,61 @@ namespace HallBooking.Controllers
             ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid", testimonial.Userid);
             return View(testimonial);
         }
+
+
+        // GET: Testimonials/Edit/5
+        //public async Task<IActionResult> Edit(decimal? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //   // var testimonial = await _context.Testimonials.FindAsync(id);
+        //    var testimonial = await _context.Testimonials.FirstOrDefaultAsync(m => m.Testmoninalid == id);
+        //    if (testimonial == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid", testimonial.Userid);
+        //    return View();
+        //}
+
+        //// POST: Testimonials/Edit/5
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        //// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(decimal id, [Bind("Testmoninalid,Message,Testimage,Status,Userid,Name")] Testimonial testimonial)
+        //{
+        //    if (id != testimonial.Testmoninalid)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            _context.Update(testimonial);
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!TestimonialExists(testimonial.Testmoninalid))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    ViewData["Userid"] = new SelectList(_context.Useraccounts, "Userid", "Userid", testimonial.Userid);
+        //    return View(testimonial);
+        //}
 
         // GET: Testimonials/Delete/5
         public async Task<IActionResult> Delete(decimal? id)
