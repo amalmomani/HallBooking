@@ -30,7 +30,7 @@ namespace HallBooking.Controllers
 
             ViewBag.numberofcustomer = _context.Useraccounts.Count();
             ViewBag.numberofHalls = _context.Halls.Count();
-            ViewBag.numberofHalls_isBooking = _context.Books.Count(x => x.Status == "Accept");
+            ViewBag.numberofHalls_isBooking = _context.Books.Count(x => x.Status == "Accept" );
             ViewBag.numberofHalls_is_notBooking = _context.Books.Count(x => x.Status == "Under Process");
             ViewBag.number_of_Hallcategories = _context.Hallcategories.Count();
             
