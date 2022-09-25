@@ -1,4 +1,4 @@
-﻿@model Tuple<IEnumerable<Useraccount>, IEnumerable<Hallcategory>, IEnumerable<Hall>, IEnumerable<Book>>
+﻿@model Tuple<IEnumerable<Useraccount>, IEnumerable<Hallcategory>, IEnumerable<Hall>, IEnumerable<Book>, IEnumerable<Testimonial>, IEnumerable<Contactu>>
 @{
     Layout = "~/Views/Shared/Admin.cshtml";
 }
@@ -99,7 +99,7 @@
                                         <tr class="unread">
 
                                             <td>
-                                                <img src=@Url.Content("~/Image/" + item.Image) class="rounded-circle" style="width:70px; height:70px; object-fit:contain" />
+                                                <img src=@Url.Content("~/Images/" + item.Image) class="rounded-circle" style="width:70px; height:70px; object-fit:contain" />
                                             </td>
                                             <td>
                                                 <h6 class="mb-1">
@@ -132,35 +132,41 @@
                                 <h5 class="m-0">Total Hall Categories</h5>
                             </div>
                             <div class="col-auto">
-                                <label class="label theme-bg2 text-white f-14 f-w-400 float-right">@ViewBag.number_of_Hallcategories</label>
+
                             </div>
                         </div>
                         <h2 class="mt-3 f-w-300">@ViewBag.number_of_Hallcategories<sub class="text-muted f-14"> categories</sub></h2>
-                        <h6 class="text-muted mt-4 mb-0"> </h6>
-                        <i class="fab fa-angellist text-c-purple f-50"></i>
-                    </div>
-                </div>
-                <div class="card">
-                    <div>
 
                     </div>
-                    @*@foreach (var item in Model.Item2)*@
-                    
-                    <div class="card-block">
-                        <div class="row d-flex align-items-center">
-                            <div class="col-auto">
-                                <i class="feather icon-home f-30 label theme-bg2 text-white f-14 f-w-400 float-right text-c-blue"></i>
-                            </div>
-                            <div class="col">
-                                <h3 class="f-w-300">Home Logo</h3>
-                                <span class="d-block text-uppercase">
-                                    @*<img src=@Url.Content("~/Image/" + item.Companylogo) style="width:200px; height:150px; object-fit:contain" />*@
-                                </span>
-                            </div>
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col">
+                            <h5 class="m-1">   Total Halls</h5>
+                        </div>
+                        <div class="col-auto">
+
                         </div>
                     </div>
+                    <h2 class="mt-3 f-w-300">  @ViewBag.numberofHalls<sub class="text-muted f-14"> Halls</sub></h2>
                 </div>
+
             </div>
+            @*<div class="col-xl-4 col-md-6">
+                <div class="card card-event">
+                    <div class="card-block">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col">
+                                <h5 class="m-0">Total Hall Categories</h5>
+                            </div>
+                            <div class="col-auto">
+
+                            </div>
+                        </div>
+                        <h2 class="mt-3 f-w-300"> @ViewBag.numberofHalls<sub class="text-muted f-14"> categories</sub></h2>
+
+                    </div>
+                </div>
+
+            </div>*@
 
 
             <div class="col-xl-8 col-md-6">
@@ -172,21 +178,22 @@
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <tbody>
-                                    @*@foreach (var item in Model.Item1)*@
+                                    @foreach (var item in Model.Item5)
                                     {
-                                    <tr class="unread">
-                                        @*<td>
-                                                <img src=@Url.Content("~/Image/" + item.Testimage) class="rounded-circle" style="width:40px" />
+                                        <tr class="unread">
+                                            <td>
+                                                <img src=@Url.Content("~/Images/" + item.User.Image) class="rounded-circle" style="width:60px" />
                                             </td>
                                             <td>
                                                 <h6 class="mb-1">
-                                                    @Html.DisplayFor(modelItem => item.Name)
+                                                    @Html.DisplayFor(modelItem => item.User.Fullname)
                                                 </h6>
                                                 <p class="m-0">
                                                     @Html.DisplayFor(modelItem => item.Message)
                                                 </p>
-                                            </td>*@
-                                    </tr>}
+                                            </td>
+                                        </tr>
+}
                                 </tbody>
                             </table>
                             <a href="/Testimonials/Index" class="btn btn-primary" style="font-size:15px; padding:5px; margin-left:230px"><i class="fa fa-inbox"></i>Show All To Accept or Reject Review</a>
@@ -204,10 +211,10 @@
                     </div>
                     <table class="table table-hover">
                         <tbody>
-                            @*@foreach (var item in Model.Item4)*@
+                            @foreach (var item in Model.Item6)
                             {
-                            <tr class="unread">
-                                @*<td>
+                                <tr class="unread">
+                                    <td>
                                         @Html.DisplayFor(modelItem => item.Name)
                                     </td>
                                     <td>
@@ -215,8 +222,9 @@
                                             @Html.DisplayFor(modelItem => item.Message)
                                         </h6>
 
-                                    </td>*@
-                            </tr>}
+                                    </td>
+                                </tr>
+}
                         </tbody>
                     </table>
                     <a href="/Contactus/Index" class="btn btn-primary" style="font-size:15px; padding:5px;"><i class="fa fa-inbox"></i>Show All</a>
@@ -262,7 +270,7 @@
                                 <tr>
 
                                     <td>
-                                        <img src=@Url.Content("~/Image/" + item.Imagepath) style="width:70px; height:50px; object-fit:contain" />
+                                        <img src=@Url.Content("~/Images/" + item.Imagepath) style="width:70px; height:50px; object-fit:contain" />
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Hallname)
@@ -273,9 +281,11 @@
                                     </td>
 
                                 </tr>
-}
+                            }
                         </tbody>
                     </table>
+                    <a href="/Halls/Index" class="btn btn-primary" style="font-size:15px; padding:5px; margin-left:80px"><i class="fa fa-inbox"></i>Show All</a>
+
                 </div>
             </div>
         </div>

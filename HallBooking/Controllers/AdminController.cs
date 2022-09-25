@@ -40,9 +40,11 @@ namespace HallBooking.Controllers
 
             var user = _context.Useraccounts.ToList().Take(5);
             var category = _context.Hallcategories.ToList().Take(3);
-            var hall = _context.Halls.ToList();
+            var hall = _context.Halls.ToList().Take(10);
             var book = _context.Books.ToList();
-            var modle = Tuple.Create<IEnumerable<Useraccount>, IEnumerable<Hallcategory>, IEnumerable<Hall>, IEnumerable<Book>>(user, category,hall, book);
+            var Testimonials = _context.Testimonials.ToList().Take(5);
+            var contact = _context.Contactus.ToList().Take(5);
+            var modle = Tuple.Create<IEnumerable<Useraccount>, IEnumerable<Hallcategory>, IEnumerable<Hall>, IEnumerable<Book>, IEnumerable<Testimonial>, IEnumerable<Contactu>>(user, category,hall, book, Testimonials, contact);
 
 
 

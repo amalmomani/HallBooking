@@ -46,9 +46,9 @@
                     @Html.DisplayFor(modelItem => item.Subject)
                 </td>
                 <td>
-                    
-                    <a style="padding:5px" class="btn-info" asp-action="Details" asp-route-id="@item.Contid">Details</a> 
-                    
+
+                    <a style="padding:5px" class="btn-info" asp-action="Details" asp-route-id="@item.Contid">Details</a>
+                    @*<a style="padding:5px" class="btn-info" asp-action="Delete" asp-route-id="@item.Contid">Delete</a>*@
                 </td>
             </tr>
         }

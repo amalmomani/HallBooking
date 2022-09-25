@@ -194,6 +194,7 @@ namespace HallBooking.Controllers
             MailMessage message = new MailMessage();
             message.From = new MailAddress("Ahmad_bani_Yaseen@outlook.com");
             message.To.Add(new MailAddress(to.ToString()));
+            
             string body = " Greetings from Hall Book! " + " Your book has been accepted! " ;
             message.Subject = "Success Checkout";
             message.Body = body;
