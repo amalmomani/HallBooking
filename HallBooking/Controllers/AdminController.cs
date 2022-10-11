@@ -17,7 +17,7 @@ namespace HallBooking.Controllers
         public AdminController(ModelContext context, IWebHostEnvironment _webHostEnvironment)
         {
             _context = context;
-            //assign initial value variable
+            //assign initial value variable 
             webhostEnvironment = _webHostEnvironment;
         }
         public IActionResult Index()
